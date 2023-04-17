@@ -1,0 +1,72 @@
+body {
+    background: #000000;
+    background: linear-gradient(to left, #1d1d1d, #111111);
+  }
+
+/* REGISTER */
+
+  .duplicate{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: #dc3545;
+  }
+
+
+  .card-img-left {
+    width: 45%;
+    /* Link to your background image using in the property below! */
+    background: scroll left url('https://images.unsplash.com/photo-1613687528267-a5e8dff89f39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');
+    background-size: cover; 
+  }
+  
+  .btn-google {
+    color: white !important;
+    background-color: #ea4335;
+  }
+  
+  .btn-facebook {
+    color: white !important;
+    background-color: #3b5998;
+  }
+
+/* LOGIN */
+
+/* .login {
+    min-height: 100vh;
+  } */
+  
+  .login-heading {
+    font-weight: 300;
+  }
+  
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+  }
+
+
+  .pst{
+    text-align:center;
+    color: #ffffff;
+    line-height: 1;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-shadow: 2px 2px #000000;
+  }
+
+  .btn-primary {
+    --bs-btn-bg: #121211;
+  }
+
+  .btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: #212121;
+    border-color: var(--bs-btn-hover-border-color);
+}

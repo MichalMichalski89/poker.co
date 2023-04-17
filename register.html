@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link href="./Bootstrap/bootstrap.min.css" rel="stylesheet" > 
+
+    <link rel="stylesheet" href="./CSS/styles.css">
+
+    <script src="https://kit.fontawesome.com/aec776f9d4.js" crossorigin="anonymous"></script>
+
+    <title>Register</title>
+
+</head>
+<body>
+    
+<!-- BS Reg snippet -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex pst">
+                        <span class="pst" >POKER <br>in<br> PUB </span>
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+                        
+                        <form class="needs-validation" action="PHP/register.php" method="post" id="register-form" novalidate>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" pattern=".{3,16}" id="floatingInputUsername" name="new-username" placeholder="myusername" autocomplete="off" required >
+                            <label for="floatingInputUsername">Username</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                A username has to be between 3 and 16 characters.
+                            </div>
+                            <div class="d-none duplicate">
+                                Username already taken.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            
+                            <input type="email" class="form-control" id="floatingInputEmail" name="new-email" placeholder="name@example.com" required>
+
+                            <label for="floatingInputEmail">Email address</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                This email address does not seem to follow the expected format. 
+                            </div>
+                            <div class="d-none duplicate">
+                                This Email address is already in our database. 
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPassword" name="new-password" placeholder="Password" required>
+                            <label for="floatingPassword">Password</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                A password must be between 9-16 characters and include at least: <br>
+                                - one lowercase letter,<br>
+                                - one uppercase letter,<br>
+                                - one number
+                            </div>
+                            <div class="d-none duplicate not-match">
+                                Passwords do not match.
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPasswordConfirm" name="new-password-confirm" placeholder="Confirm Password" required>
+                            <label for="floatingPasswordConfirm">Confirm Password</label>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+
+                            <div class="d-none duplicate not-match">
+                                Make sure that the passwords match.
+                            </div>
+                        </div>
+
+
+                        <div class="d-grid mb-2">
+                            <button class="btn btn-lg btn-primary btn-login text-uppercase" type="submit">Register</button>
+                        </div>
+                        <!-- <div class="d-grid mb-2">
+                            <button class="btn btn-lg btn-secondary text-uppercase" onclick="kill()">click</button>
+                        </div> -->
+
+                        <a class="d-block text-center mt-2 small" href="./login.html">Have an account already? Sign In!</a>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        console.log("working");
+    //document.getElementById("").addEventListener("keyup", ()=>{alert("changin")});
+    
+    const newUsername = document.getElementById("floatingInputUsername");
+    const newEmail = document.getElementById("new-email");
+    const newPass = document.getElementById("new-password");
+    const newPass2 = document.getElementById("new-password-confirm");
+	
+    $('#floatingInputUsername').keyup(validateUser);
+    $('#floatingInputEmail').keyup(validateEmail);
+    $('#floatingPassword').keyup(validatePassword);
+    $('#floatingPasswordConfirm').keyup(validatePassword);
+
+    }
+</script>
+
+<script type="text/javascript">
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    
+(function () {
+  'use strict'
+    console.log("bs val starts");
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+
+        alert("checking form form validity: " + form.checkValidity())
+
+
+         if (!form.checkValidity()) {
+           event.preventDefault();
+           event.stopPropagation();
+         }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+    console.log("bootstrap validation passed");
+})()
+</script>
+
+<script type="text/javascript">
+
+    function validateUser(event){
+        console.log("validator running with: " + event.target.value);
+        //console.log(this);
+        
+        getData("./PHP/userVerify.php", {username: event.target.value})
+            .then((availablility) => {
+                console.log("php returned: " + availablility);
+                console.log(event.target.checkValidity());
+
+                //let validity = event.target.checkValidity()
+
+                if(!availablility) {
+                    event.target.setCustomValidity( event.target.value + "database duplicate error");
+                    $(event.target).addClass("is-invalid");
+                    $(event.target).siblings("div.duplicate").removeClass("d-none");
+                    $(event.target).siblings("div.invalid-feedback").addClass("d-none")
+                    //event.target
+
+                } else {
+                    $(event.target).siblings("div.duplicate").addClass("d-none");
+                    $(event.target).removeClass("is-invalid");
+                    $(event.target).siblings("div.invalid-feedback").removeClass("d-none");
+                    event.target.setCustomValidity("");
+                }
+            });
+    }
+
+    function validateEmail(event){
+
+        $(event.target).val(this.value.toLowerCase())
+
+        console.log("validator running with: " + $(event.target)[0].value.toLowerCase());
+        //console.log(this);
+
+        getData("./PHP/emailVerify.php", {email: (event.target.value).toLowerCase()})
+            .then((availablility) => {
+                console.log(event.target.checkValidity());
+
+                //let validity = event.target.checkValidity()
+
+
+                if(!availablility) {
+                    event.target.setCustomValidity( event.target.value + "database duplicate error");
+                    $(event.target).addClass("is-invalid");
+                    $(event.target).siblings("div.duplicate").removeClass("d-none");
+                    $(event.target).siblings("div.invalid-feedback").addClass("d-none")
+
+                } else {
+                    $(event.target).siblings("div.duplicate").addClass("d-none");
+                    $(event.target).removeClass("is-invalid");
+                    $(event.target).siblings("div.invalid-feedback").removeClass("d-none");
+                    event.target.setCustomValidity("");
+
+                }
+            });
+    }
+
+    function validatePassword(event){
+
+        let pass = $("#floatingPassword");
+        let confr = $("#floatingPasswordConfirm");
+        //let both = $("#floatingPassword, #floatingPasswordConfirm");
+
+                if (pass.val() !== confr.val()) {
+
+                    console.log("Pass is:   not the same --- " + pass.val() + " ---  " + confr.val());
+                    
+                    confr.addClass("is-invalid");
+                    confr[0].setCustomValidity("passwords do not match");
+                    confr.siblings("div.not-match").removeClass("d-none");
+                    confr.siblings("div.invalid-feedback").addClass("d-none");
+
+                } else {
+                    console.log("Pass is: the same ");
+
+                    confr.removeClass("is-invalid");
+                    confr[0].setCustomValidity("");
+                    confr.siblings("div.not-match").addClass("d-none");
+                    confr.siblings("div.invalid-feedback").removeClass("d-none");
+
+                }
+            
+    }
+
+
+    var getData = (url, data = null) => {
+	    return new Promise((resolve, reject) => {
+
+            $.ajax({
+                url: url,
+                type: 'post',
+                dataType: "json",
+                data: data,
+
+                success: function(result) {
+                    resolve(result);
+                },
+                error: function(errorThrown) {
+                    reject(errorThrown)
+                },
+		    })
+	    })
+    };
+
+        function kill(){
+            $("#register-form").removeClass("was-validated");
+        }
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="./Bootstrap/bootstrap.bundle.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
