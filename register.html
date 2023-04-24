@@ -19,8 +19,8 @@
 <body>
     
 <!-- BS Reg snippet -->
-    <div class="container">
-        <div class="row">
+
+
             <div class="col-lg-10 col-xl-9 mx-auto">
                 <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
                     <div class="card-img-left d-none d-md-flex pst">
@@ -32,7 +32,7 @@
                         <form class="needs-validation" action="PHP/register.php" method="post" id="register-form" novalidate>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" pattern=".{3,16}" id="floatingInputUsername" name="new-username" placeholder="myusername" autocomplete="off" required >
+                            <input type="text" class="form-control w-100" pattern=".{3,16}" id="floatingInputUsername" name="new-username" placeholder="myusername" autocomplete="off" required >
                             <label for="floatingInputUsername">Username</label>
                             <div class="valid-feedback">
                                 Looks good!
@@ -47,7 +47,7 @@
 
                         <div class="form-floating mb-3">
                             
-                            <input type="email" class="form-control" id="floatingInputEmail" name="new-email" placeholder="name@example.com" required>
+                            <input type="email" class="form-control w-100" id="floatingInputEmail" name="new-email" placeholder="name@example.com" required>
 
                             <label for="floatingInputEmail">Email address</label>
                             <div class="valid-feedback">
@@ -64,7 +64,7 @@
                         <hr>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPassword" name="new-password" placeholder="Password" required>
+                            <input type="password" class="form-control w-100" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPassword" name="new-password" placeholder="Password" required>
                             <label for="floatingPassword">Password</label>
                             <div class="valid-feedback">
                                 Looks good!
@@ -81,7 +81,7 @@
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPasswordConfirm" name="new-password-confirm" placeholder="Confirm Password" required>
+                            <input type="password" class="form-control w-100" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPasswordConfirm" name="new-password-confirm" placeholder="Confirm Password" required>
                             <label for="floatingPasswordConfirm">Confirm Password</label>
                             <div class="valid-feedback">
                                 Looks good!
@@ -107,8 +107,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
 
 
 <script type="text/javascript">
@@ -246,7 +245,7 @@
     }
 
 
-    var getData = (url, data = null) => {
+    function getData (url, data = null) {
 	    return new Promise((resolve, reject) => {
 
             $.ajax({

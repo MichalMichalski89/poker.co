@@ -60,7 +60,7 @@ $stmt->bind_param("sss",
 
 $stmt->execute();
 
-header("Location: reg-success.html");
+header("Location: ../reg-success.html");
 //echo $newPasswordHash;
 
 //echo $mysqli->error;
