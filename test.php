@@ -1,6 +1,13 @@
 <?php
-    session_start();
-    $ss = $_SESSION["user_ID"];
+    if(isset($_SESSION['user_ID'])) {
+        
+        session_start();
+        $ss = $_SESSION["user_ID"];
+
+    } else {
+
+        $ss = "session[id] not set";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +46,6 @@
     </div>
   </header>
 
-
-
-
   <section id="Players" class="">
     <h1 class="logo " >PokerinPub.co.uk</h1>
     <p class="lead comf">COMING SOON</p>
@@ -60,7 +64,7 @@
 (function () {
   'use strict'
 
-    let ss = "<?php echo $ss; ?>" ;
+    let ss = "<?php if(isset($_SESSION) && !empty($ss)) { echo $ss;} ?>" 
 
     console.log(ss);
 
