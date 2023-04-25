@@ -64,7 +64,7 @@
 (function () {
   'use strict'
 
-    let ss = "<?php if(isset($_SESSION) && !empty($ss)) { echo $ss;} ?>" 
+    let ss = "<?php if(isset($_SESSION)) { echo $ss;} ?>" 
 
     console.log(ss);
 
