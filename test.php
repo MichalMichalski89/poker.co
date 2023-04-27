@@ -36,11 +36,11 @@
   <header class="mb-auto">
     <div>
       <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link active" aria-current="page" href="#">About</a>
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
         <a class="nav-link" href="#Players">Players</a>
         <a class="nav-link" href="#Venues">Venues</a>
         <a class="nav-link" href="#Contact">Contact</a>
-        <a href="#" class="btn btn-sm btn-secondary fw-bold border-white bg-white">Sign In</a>
+        <a href="#" class="btn btn-sm btn-secondary fw-bold border-white bg-white btn-top">Sign In</a>
 
       </nav>
     </div>

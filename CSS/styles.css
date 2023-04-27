@@ -1,14 +1,14 @@
 
   .btn {
     --bs-btn-font-family: comfotaa, Verdana, Geneva, Tahoma, sans-serif !important;
-    margin-left: 1rem;  
+    margin-left: 5rem;  
+    background-color: #3b5998;
   }
-  .btn-sm {
-    --bs-btn-padding-y: 0;
-    --bs-btn-padding-x: 0rem;
-    --bs-btn-font-size: 0.875rem;
-    --bs-btn-border-radius: 0.25rem;
-}
+  .btn-top {
+    max-height: 1.8rem;
+    background-color: none;
+  }
+
   @font-face {
     font-family: comfotaa;
     src: url(../fonts/Comfortaa\ Regular\ 400.ttf);
