@@ -30,3 +30,11 @@ nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo-display, nav.navbar.bo
 .logo.logo-scrolled{
     color: white;
 }
+
+.board-select {
+    color: unset;
+    background-color: unset;
+    width: unset;
+    border: unset;
+    margin-right: 3rem;
+}
