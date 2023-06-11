@@ -38,3 +38,9 @@ nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo-display, nav.navbar.bo
     border: unset;
     margin-right: 3rem;
 }
+
+#map{
+    width: 90%;
+    height: 40vh;
+    background-color: black;
+}

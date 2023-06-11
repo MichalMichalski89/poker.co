@@ -10,10 +10,12 @@
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+<!-- Leaflet -->
+<link rel="stylesheet" href="./assets/css/leaflet.css" />
+<script src="./assets/js/leaflet/leaflet.js"></script>
 
 <!-- Core Style Sheets -->
 <link rel="stylesheet" href="assets/css/master.css">
-
 
 <!-- Responsive Style Sheets -->
 <link rel="stylesheet" href="assets/css/responsive.css">
@@ -21,11 +23,14 @@
 <link rel="stylesheet" type="text/css" href="revolution/css/settings.css">
 <link rel="stylesheet" type="text/css" href="revolution/css/layers.css">
 <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css">
+
 <!-- Custom Style Sheets -->
 <link rel="stylesheet" type="text/css" href="./assets/css/custom.css">
 
 </head>
 <body>
+
+
 
 <!--== Loader Start ==-->
 <div id="loader-overlay">
@@ -59,8 +64,8 @@
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
           <li><a class="page-scroll" href="#about">About</a></li>
-          <li><a class="page-scroll" href="#results">Reults</a></li>
-          <li><a class="page-scroll" href="#players">Find Games</a></li>
+          <li><a class="page-scroll" href="#venues">Venues</a></li>
+          <li><a class="page-scroll" href="#boards">Leaderboards</a></li>
           <li><a class="page-scroll" href="#rules">Rules</a></li>
           <li><a class="page-scroll" href="#contact">Contact</a></li>
           <li><a class="page-scroll" style="text-decoration: underline;" href="#results">Log in</a></li>
@@ -302,7 +307,7 @@
   <!--== Who We Are Start ==-->
   <div class="white-bg pt-0 pb-0 sm-pt-50 sm-pb-50 about-section">
     <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
-      <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/bg-left-img.jpg);"></div>
+      <div class="bg-flex-holder bg-flex-cover" style="background-image: url(https://images.unsplash.com/photo-1604345250885-11f528eec3ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1519&q=80);"></div>
     </div>
     <div class="container-fluid">
       <div class="col-md-6 col-sm-6">
@@ -333,7 +338,7 @@
   <!--== About Company Start ==-->
   <div class="dark-bg pt-0 pb-0 about-section sm-pt-50 sm-pb-50" id="about">
     <div class="col-md-6 col-sm-6 bg-flex bg-flex-left">
-      <div class="bg-flex-holder bg-flex-cover" style="background-image: url(assets/images/bg-left-img-2.jpg);"></div>
+      <div class="bg-flex-holder bg-flex-cover" style="background-image: url(https://images.unsplash.com/photo-1611104866937-e7e05b8571b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80);"></div>
     </div>
     <div class="container-fluid">
       <div class="col-md-6 col-sm-6 col-md-offset-6 col-sm-offset-6">
@@ -422,7 +427,7 @@
         </div>
       </div>
         <div class="row mt-50">
-          <div class="col-md-4 pricing-table col-sm-4 xs-mb-30">
+          <div class="col-lg-4 pricing-table col-sm-12 md-mb-30">
             <div class="pricing-box pricing-box-bg text-left wow fadeInLeft" data-wow-delay="0.1s">
               <div class="plan-name">
                 <h3>One off</h3>
@@ -443,7 +448,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 pricing-table col-sm-4 xs-mb-30">
+          <div class="col-lg-4 pricing-table col-sm-12 md-mb-30">
             <div class="pricing-box featured pricing-box-bg text-left">
               <div class="plan-name">
                 <h3>Fortnightly</h3>
@@ -465,7 +470,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 pricing-table col-sm-4">
+          <div class="col-lg-4 pricing-table col-sm-12">
             <div class="pricing-box pricing-box-bg text-left wow fadeInRight" data-wow-delay="0.2s">
               <div class="plan-name">
                 <h3>Weekly</h3>
@@ -534,10 +539,30 @@
   </section>
   <!--== Testimonials End ==-->
 
+<!-- == Venues == -->
+
+<div class=" dark-bg" id="venues">
+  <div class="pt-120 pb-120">
+
+    <div class="col-md-8 centerize-col text-center">
+      <div class="section-title">
+        <h4 class="default-color">Find a game</h4>
+        <h1 class="white-color">Venues</h1>
+        <p>
+          Each of our client venues is represented by a marker on the map below. The venues represented by green markers are those which are 'live' and host a weekly poker game. The blue markers represent venues which are 'awaiting players', register interest in playing at 
+        </p>
+      </div>
+
+    </div>
+    <div id="map" class="col-md-8 centerize-col text-center"></div>
+  </div>
+
+</div>   
+
 
 <!-- == Leaderboards == -->
 
-  <div class="container">
+  <div class="container" id="boards">
     <div class="row pt-120 pb-120">
 
       <div class="col-md-8 centerize-col text-center">
@@ -551,7 +576,7 @@
       </div>
 
 
-      <div>
+      <div class="col-md-8 centerize-col text-center">
         <label for="pub">Venue:</label>
 
         <select name="pub" class="board-select" id="pet-select">
@@ -741,6 +766,8 @@
 <script src="assets/js/smoothscroll.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/master.js"></script>
+<script src="assets/js/scripts.js"></script>
+
 
 <!-- Paricle Add-On Files -->
 <link rel='stylesheet' href='revolution/css/revolution.addon.particles.css?ver=1.0.3'/>
@@ -838,6 +865,7 @@
             RsParticlesAddOn(revapi4);
   });	/*ready*/
 </script>
+
 
 <!-- Revolution js Files -->
 <script src="revolution/js/jquery.themepunch.tools.min.js"></script>
