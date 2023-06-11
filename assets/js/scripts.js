@@ -7,7 +7,7 @@
 		minZoom: 10,
 		layers: L.tileLayer('https://api.mapbox.com/styles/v1/michalmichalski89/cl2f0cxyd001314nzqn9j3ccp/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWljaGFsbWljaGFsc2tpODkiLCJhIjoiY2t5eGpqMHhnMGF6aTJvbXY5NjFkMzFxbyJ9.gD3VvJp3YAd73_BOzxMCXA', {
 
-		maxBoundsViscosity: 0.1
+		//maxBoundsViscosity: 0.1
 	})
 });
 
