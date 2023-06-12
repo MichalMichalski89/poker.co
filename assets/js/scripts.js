@@ -1,18 +1,37 @@
 // innitialise map
 
 	const map = L.map('map', {
-		center: [51.54915256159877, -0.6180077023071624],
+		center: [51.54, -0.61],
 		zoom: 10,
-		maxZoom: 20,
-		minZoom: 10,
-		layers: L.tileLayer('https://api.mapbox.com/styles/v1/michalmichalski89/cl2f0cxyd001314nzqn9j3ccp/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWljaGFsbWljaGFsc2tpODkiLCJhIjoiY2t5eGpqMHhnMGF6aTJvbXY5NjFkMzFxbyJ9.gD3VvJp3YAd73_BOzxMCXA', {
 
-		//maxBoundsViscosity: 0.1
-	})
+		
 });
 
+var tiles = new L.tileLayer('https://api.mapbox.com/styles/v1/michalmichalski89/cl2f0fdqa001315nvd0r0nxhs/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWljaGFsbWljaGFsc2tpODkiLCJhIjoiY2t5eGpqMHhnMGF6aTJvbXY5NjFkMzFxbyJ9.gD3VvJp3YAd73_BOzxMCXA', {
+    attribution: '&copy;',
+  minZoom: '9'}).addTo(map);
+
+
 	// disallow dragging out of map
-	const southWest = L.latLng(-89.98155760646617, -Infinity),
-		northEast = L.latLng(89.99346179538875, Infinity);
+	const southWest = L.latLng(51.13, 0.26),
+		northEast = L.latLng(51.84, -1.62);
 	const bounds = L.latLngBounds(southWest, northEast);
 	map.setMaxBounds(bounds);
+
+
+	  var redMarker = L.ExtraMarkers.icon({
+		icon: 'fa-beer-mug-empty',
+		markerColor: 'green',
+		shape: 'square',
+		prefix: 'fa'
+	  });
+
+	  var greyMarker = L.ExtraMarkers.icon({
+		icon: 'fa-beer-mug-empty',
+		markerColor: 'blue',
+		shape: 'square',
+		prefix: 'fa'
+	  });
+	
+	  L.marker([51.54918591996306, -0.618029159994078], {icon: redMarker}).addTo(map);
+	  L.marker([51.60261178009952, -0.6334618306841484], {icon: greyMarker}).addTo(map);
