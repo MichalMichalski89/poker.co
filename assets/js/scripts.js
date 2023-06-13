@@ -33,5 +33,7 @@ var tiles = new L.tileLayer('https://api.mapbox.com/styles/v1/michalmichalski89/
 		prefix: 'fa'
 	  });
 	
-	  L.marker([51.54918591996306, -0.618029159994078], {icon: redMarker}).addTo(map);
-	  L.marker([51.60261178009952, -0.6334618306841484], {icon: greyMarker}).addTo(map);
+	  L.marker([51.54918591996306, -0.618029159994078], {icon: redMarker}).addTo(map)
+	  	.bindPopup('<b>The Emperor</b>' + '<br> Game night: <b>Monday</b>, <b>7pm start</b>' + '<br> Day Address: Blackpond Ln, Slough SL2 3EG');
+		  
+	  L.marker([51.60261178009952, -0.6334618306841484], {icon: greyMarker}).addTo(map)
