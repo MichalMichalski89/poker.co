@@ -56,6 +56,7 @@
 @import url("../css/bootsnav.css");
 @import url("../css/slick.css");
 @import url("../css/animate.css");
+@import url("../css/boots5tables.css");
 
 /* Transitons */
 
@@ -1659,7 +1660,7 @@ a.btn-text.white{color:#fff !important;}
 
 /* pagination */
 .pagination {border-radius: 0; padding: 0; margin: 0}
-.pagination ul { display: inline-block; *display: inline; *zoom: 1; margin-left: 0; margin-bottom: 0; padding: 0; }
+.pagination ul { display: inline-block; display: inline; zoom: 1; margin-left: 0; margin-bottom: 0; padding: 0; }
 .pagination li { display: inline; }
 .pagination a { float: left; padding: 0 18px; line-height: 40px; text-decoration: none; border: 1px solid #eee; border-left-width: 0; background: #fff }
 .pagination a:hover {background-color: #1ca7ec; color: #fff }
