@@ -2,34 +2,61 @@
     font-family: comforta;
     src: url(../fonts/Comfortaa\ Regular\ 400.ttf);
   }
-  @font-face {
+
+@font-face {
     font-family: blendascript;
     src: url(../fonts/Blenda\ Script.otf);
   }
 
+#map{
+    z-index: 19;
+}
+/* take out user agent padding from social media list*/
+  ul.social-media {
+    padding-inline-start: unset;
+}
+
+
+/* fixing logo classes to work with h1 instead of img */
 .logo{
     font-size: 3rem;
     font-family: blendascript, arial;
-    margin-bottom: 0.8rem!important;
+    color: white;
 }
-/* fixing logo classes to work with h1 instead of img */
+ #top-logo{
+    height: auto;
+ }
+
+/* nav.navbar.bootsnav.navbar-transparent .logo,{
+    height: auto!important;
+
+} */
+
 /* nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo-scrolled,
 nav.navbar.bootsnav.navbar-fixed.no-background .logo-scrolled{
     line-height: 0;
 } */
 
-nav.navbar.bootsnav.navbar-fixed .logo-display{
+/* nav.navbar.bootsnav.navbar-fixed .logo{
     color:white;
-    opacity: 1;
-}
+} */
+@media (min-width:1023px){
 
-nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo-display, nav.navbar.bootsnav.navbar-fixed.no-background .logo-display {
+    nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo{
     color: black;
-}
+    
+    }
+} 
 
+/*
 .logo.logo-scrolled{
     color: white;
-}
+} 
+
+
+
+
+*/
 
 .board-select {
     color: unset;
