@@ -22,7 +22,7 @@
     font-size: 3rem;
     font-family: blendascript, arial;
     color: white;
-    margin-bottom: 1rem!important;
+
 }
 
  #top-logo{
@@ -42,14 +42,19 @@ nav.navbar.bootsnav.navbar-fixed.no-background .logo-scrolled{
 /* nav.navbar.bootsnav.navbar-fixed .logo{
     color:white;
 } */
-@media (min-width:1023px){
+@media (min-width:1024px){
 
     nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo{
     color: black;
-    
+    margin-bottom: 0.8rem!important;
     }
-} 
 
+} 
+@media (max-width:1024px){
+    div.col-half.right{
+        margin-bottom: 2vh;
+    }
+}
 /*
 .logo.logo-scrolled{
     color: white;
