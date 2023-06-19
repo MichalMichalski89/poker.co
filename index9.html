@@ -75,7 +75,7 @@
           <li><a class="page-scroll" href="#boards">Leaderboards</a></li>
           <li><a class="page-scroll" href="#rules">Rules</a></li>
           <li><a class="page-scroll" href="#contact">Contact</a></li>
-          <li><a class="page-scroll" style="text-decoration: underline;" href="#results">Log in</a></li>
+          <li><a class="page-scroll" style="text-decoration: underline;" data-toggle="modal" data-target="#myModal" href="#myModal">Log in</a></li>
         </ul>
       </div>
       <!--== /.navbar-collapse ==-->
@@ -309,6 +309,12 @@
   </div>
   <!--== Hero Slider End ==-->
 
+  <!-- Modal Test -->
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch working modal
+  </button>
+  
+ <!-- Test End-->
 
 
   <!--== Who We Are Start ==-->
@@ -896,5 +902,110 @@
 <script src="revolution/js/revolution.extension.video.min.js"></script>
 <!--== Javascript Plugins End ==-->
 
+<script src="./v1/Bootstrap/bootstrap.bundle.min.js"></script>
+
+
+<div class="modal fade" id="myModal" tabindex="9999" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+          <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+              <div class="card-img-left d-none d-md-flex pst">
+                  <span class="pst" >POKER <br>in<br> PUB </span>
+              </div>
+              <div class="card-body p-4 p-sm-5">
+                  <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+                  
+                  <form class="needs-validation" action="PHP/register.php" method="post" id="register-form" novalidate>
+
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control w-100" pattern=".{3,16}" id="floatingInputUsername" name="new-username" placeholder="myusername" autocomplete="off" required >
+                      <label for="floatingInputUsername">Username</label>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          A username has to be between 3 and 16 characters.
+                      </div>
+                      <div class="d-none duplicate">
+                          Username already taken.
+                      </div>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                      
+                      <input type="email" class="form-control w-100" id="floatingInputEmail" name="new-email" placeholder="name@example.com" required>
+
+                      <label for="floatingInputEmail">Email address</label>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          This email address does not seem to follow the expected format. 
+                      </div>
+                      <div class="d-none duplicate">
+                          This Email address is already in our database. 
+                      </div>
+                  </div>
+
+                  <hr>
+
+                  <div class="form-floating mb-3">
+                      <input type="password" class="form-control w-100" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPassword" name="new-password" placeholder="Password" required>
+                      <label for="floatingPassword">Password</label>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+                      <div class="invalid-feedback">
+                          A password must be between 9-16 characters and include at least: <br>
+                          - one lowercase letter,<br>
+                          - one uppercase letter,<br>
+                          - one number
+                      </div>
+                      <div class="d-none duplicate not-match">
+                          Passwords do not match.
+                      </div>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                      <input type="password" class="form-control w-100" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}" id="floatingPasswordConfirm" name="new-password-confirm" placeholder="Confirm Password" required>
+                      <label for="floatingPasswordConfirm">Confirm Password</label>
+                      <div class="valid-feedback">
+                          Looks good!
+                      </div>
+
+                      <div class="d-none duplicate not-match">
+                          Make sure that the passwords match.
+                      </div>
+                  </div>
+
+
+                  <div class="d-grid mb-2">
+                      <button class="btn btn-lg btn-primary btn-login text-uppercase" type="submit">Register</button>
+                  </div>
+                  <!-- <div class="d-grid mb-2">
+                      <button class="btn btn-lg btn-secondary text-uppercase" onclick="kill()">click</button>
+                  </div> -->
+
+                  <a class="d-block text-center mt-2 small" href="./login.html">Have an account already? Sign In!</a>
+
+                  </form>
+
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
