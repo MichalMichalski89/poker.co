@@ -52,7 +52,7 @@ nav.navbar.bootsnav.navbar-fixed.no-background .logo-scrolled{
         margin-bottom: 2vh;
     } */
     nav.navbar.bootsnav.no-full .navbar-collapse {
-        max-height: 350px; 
+        max-height: 50vh; 
         overflow-y: hidden !important; 
     }
 }
