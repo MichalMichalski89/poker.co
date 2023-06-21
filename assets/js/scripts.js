@@ -2,9 +2,7 @@
 
 	const map = L.map('map', {
 		center: [51.54, -0.61],
-		zoom: 10,
-
-		
+		zoom: 10,	
 });
 
 var tiles = new L.tileLayer('https://api.mapbox.com/styles/v1/michalmichalski89/cl2f0fdqa001315nvd0r0nxhs/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWljaGFsbWljaGFsc2tpODkiLCJhIjoiY2t5eGpqMHhnMGF6aTJvbXY5NjFkMzFxbyJ9.gD3VvJp3YAd73_BOzxMCXA', {
