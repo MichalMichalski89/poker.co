@@ -49,6 +49,7 @@
 /* Theme Reset Start */
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600|Raleway:200,300,400,500,700,800');
+/* @import url("../css/b/bootstrap5.css"); */
 @import url("../css/bootstrap.min.css");
 @import url("../css/custom-icons.min.css");
 @import url("../css/icofont.min.css");
@@ -57,8 +58,8 @@
 @import url("../css/slick.css");
 @import url("../css/animate.css");
 @import url("../css/boots5tables.css");
-@import url("../css/boots5forms.css");
-@import url("../css/styles.css");
+/* @import url("../css/boots5forms.css"); */
+/* @import url("../css/styles.css"); */
 
 /* Transitons */
 
