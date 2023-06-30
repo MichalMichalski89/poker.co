@@ -4,6 +4,8 @@
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	margin-bottom: 0;
+	border: 0;
 }
 .panel-login>.panel-heading {
 	color: #00415d;
@@ -21,7 +23,7 @@
 	transition: all 0.1s linear;
 }
 .panel-login>.panel-heading a.active{
-	color: #029f5b;
+	color: #1ca7ec;
 	font-size: 18px;
 }
 .panel-login>.panel-heading hr{
