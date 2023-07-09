@@ -80,7 +80,7 @@
 	color: #666;
 }
 
-.btn-register {
+/* .btn-register {
 	background-color: #1CB94E;
 	outline: none;
 	color: #fff;
@@ -96,4 +96,9 @@
 	color: #fff;
 	background-color: #1CA347;
 	border-color: #1CA347;
+} */
+
+.d-none { 
+	display:none;
 }
+
