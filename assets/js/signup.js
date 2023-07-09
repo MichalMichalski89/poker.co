@@ -26,6 +26,25 @@
       console.log("bootstrap validation passed");
   })();
 
+  // run validation of fields on key up
+
+  window.onload = function () {
+  console.log("working");
+  //document.getElementById("").addEventListener("keyup", ()=>{alert("changin")});
+
+  const newUsername = document.getElementById("floatingInputUsername");
+  const newEmail = document.getElementById("new-email");
+  const newPass = document.getElementById("new-password");
+  const newPass2 = document.getElementById("new-password-confirm");
+
+  // registration fields
+  $('#username2').keyup(validateUser);
+  $('#email2').keyup(validateEmail);
+  $('#password').keyup(validatePassword);
+  $('#confirm-password').keyup(validatePassword);
+
+  }
+
 
 // check if user name already exists on database
 
@@ -33,7 +52,7 @@
     console.log("validator running with: " + event.target.value);
     //console.log(this);
     
-    getData("./PHP/userVerify.php", {username: event.target.value})
+    getData("./assets/php/usersys/emailVerify.php", {username: event.target.value})
         .then((availablility) => {
             console.log("php returned: " + availablility);
             console.log(event.target.checkValidity());
@@ -67,7 +86,7 @@ function validateEmail(event){
     console.log("validator running with: " + $(event.target)[0].value.toLowerCase());
     //console.log(this);
 
-    getData("./PHP/emailVerify.php", {email: (event.target.value).toLowerCase()})
+    getData("./assets/PHP/emailVerify.php", {email: (event.target.value).toLowerCase()})
         .then((availablility) => {
             console.log(event.target.checkValidity());
 
@@ -139,3 +158,27 @@ function getData (url, data = null) {
         })
     })
 };
+
+function kill(){
+    $("#register-form").removeClass("was-validated");
+    }
+  
+  $(function() {
+
+  $('#login-form-link').click(function(e) {
+  $("#login-form").delay(100).fadeIn(100);
+  $("#register-form").fadeOut(100);
+  $('#register-form-link').removeClass('active');
+  $(this).addClass('active');
+  e.preventDefault();
+  });
+
+  $('#register-form-link').click(function(e) {
+  $("#register-form").delay(100).fadeIn(100);
+  $("#login-form").fadeOut(100);
+  $('#login-form-link').removeClass('active');
+  $(this).addClass('active');
+  e.preventDefault();
+  });
+
+  });
