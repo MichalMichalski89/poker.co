@@ -49,30 +49,52 @@
 // check if user name already exists on database
 
   function validateUser(event){
+    // reset duplicate error message
+    $(event.target).siblings("div.duplicate").addClass("d-none");
+    event.target.setCustomValidity("");
+
+
+
     console.log("validator running with: " + event.target.value);
     //console.log(this);
-    
-    getData("./assets/php/usersys/emailVerify.php", {username: event.target.value})
+
+    // check if basic validation passed
+    if (basicValidation(event.target)){
+       console.log("basic validation passed, checking for duplicates");
+
+       
+    // check for duplicates and show/hide messages 
+    getData("./assets/php/usersys/userVerify.php", {username: event.target.value})
         .then((availablility) => {
             console.log("php returned: " + availablility);
             console.log(event.target.checkValidity());
-
             //let validity = event.target.checkValidity()
 
             if(!availablility) {
+
+                // do if not available
                 event.target.setCustomValidity( event.target.value + "database duplicate error");
-                $(event.target).addClass("is-invalid");
+                //$(event.target).addClass("is-invalid");
                 $(event.target).siblings("div.duplicate").removeClass("d-none");
-                $(event.target).siblings("div.invalid-feedback").addClass("d-none")
-                //event.target
+                $(event.target).siblings("div.invalid-feedback").addClass("d-none");
+                $(event.target).siblings("div.valid-feedback").addClass("d-none");
+                
+                
+                console.log("duplicates found")
 
             } else {
                 $(event.target).siblings("div.duplicate").addClass("d-none");
-                $(event.target).removeClass("is-invalid");
-                $(event.target).siblings("div.invalid-feedback").removeClass("d-none");
+                $(event.target).siblings("invalid-feedback").addClass("d-none");
+                //$(event.target).siblings("div.invalid-feedback").removeClass("d-none");
                 event.target.setCustomValidity("");
+
+                console.log("NO duplicates found")
             }
-        });
+        });      
+    }  else {
+        console.log("FAILLLL")
+    }
+
 }
 
 
@@ -91,7 +113,7 @@ function validateEmail(event){
             console.log(event.target.checkValidity());
 
             //let validity = event.target.checkValidity()
-
+            
 
             if(!availablility) {
                 event.target.setCustomValidity( event.target.value + "database duplicate error");
@@ -136,6 +158,24 @@ function validatePassword(event){
 
             }
         
+}
+
+// reusable function for JSapi validation
+
+function basicValidation(e){
+    if (e.checkValidity()){
+        console.log("basic validation passed removing error message");
+        $(e).siblings("div.invalid-feedback").addClass("d-none");
+        $(e).siblings("div.valid-feedback").removeClass("d-none");
+        return true;
+
+    }else {
+        console.log("basic validation not passed showing error div");
+        $(e).siblings("div.invalid-feedback").removeClass("d-none");
+        $(e).siblings("div.valid-feedback").addClass("d-none");
+        return false;
+    }
+
 }
 
 // reusable function for ajax calls

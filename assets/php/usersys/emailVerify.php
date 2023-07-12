@@ -10,7 +10,7 @@
 // }
 // console_log("email verify running!!!");
 
-$mysqli = require "conn.php";
+$mysqli = require "../conn.php";
 
 $sql = sprintf("SELECT * FROM users WHERE email ='%s'",
 $mysqli->real_escape_string($_POST["email"]));

@@ -10,7 +10,7 @@
 // }
 // console_log("user verify running!!!");
 
-$mysqli = require "conn.php";
+$mysqli = require "../conn.php";
 
 $sql = sprintf("SELECT * FROM users WHERE username ='%s'",
 $mysqli->real_escape_string($_POST["username"]));
