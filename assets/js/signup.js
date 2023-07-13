@@ -35,8 +35,8 @@
   // registration fields
   $('#username2').keyup(validateUser);
   $('#email2').keyup(validateEmail);
-  $('#password').keyup(validatePassword);
-  $('#confirm-password').keyup(validatePassword);
+  $('#password2').keyup(validatePassword);
+  $('#confirm-password').keyup(validatePasswordConfirm);
 
   }
 
@@ -80,7 +80,6 @@
             } else {
                 $(event.target).siblings("div.duplicate").addClass("d-none");
                 $(event.target).siblings("invalid-feedback").addClass("d-none");
-                //$(event.target).siblings("div.invalid-feedback").removeClass("d-none");
                 event.target.setCustomValidity("");
 
                 console.log("NO duplicates found")
@@ -115,17 +114,16 @@ function validateEmail(event){
                 console.log(" basic val passed, checking for dups")
                 
             if(!availablility) {
-                console.log(" email is available")
-                // event.target.setCustomValidity( event.target.value + "database duplicate error");
-                // $(event.target).addClass("is-invalid");
-                // $(event.target).siblings("div.duplicate").removeClass("d-none");
-                // $(event.target).siblings("div.invalid-feedback").addClass("d-none")
+                console.log(" NOT available")
+                $(event.target).siblings("div.duplicate").removeClass("d-none");
+                $(event.target).siblings("div.invalid-feedback").addClass("d-none");
+                $(event.target).siblings("div.valid-feedback").addClass("d-none");
 
             } else {
-                // $(event.target).siblings("div.duplicate").addClass("d-none");
-                // $(event.target).removeClass("is-invalid");
-                // $(event.target).siblings("div.invalid-feedback").removeClass("d-none");
-                // event.target.setCustomValidity("");
+                console.log(" IS available")
+                $(event.target).siblings("div.duplicate").addClass("d-none");
+                $(event.target).siblings("invalid-feedback").addClass("d-none");
+                event.target.setCustomValidity("");
 
             }
         }
@@ -135,30 +133,34 @@ function validateEmail(event){
 // check if passwords match
 
 function validatePassword(event){
-
-    let pass = $("#floatingPassword");
-    let confr = $("#floatingPasswordConfirm");
+    console.log("validating password")
+    if (basicValidation(event.target)){
+        
+    
+    let pass = $("#password2");
+    let confr = $("#confirm-password");
     //let both = $("#floatingPassword, #floatingPasswordConfirm");
 
             if (pass.val() !== confr.val()) {
 
                 console.log("Pass is:   not the same --- " + pass.val() + " ---  " + confr.val());
                 
-                confr.addClass("is-invalid");
-                confr[0].setCustomValidity("passwords do not match");
-                confr.siblings("div.not-match").removeClass("d-none");
-                confr.siblings("div.invalid-feedback").addClass("d-none");
+                // confr.addClass("is-invalid");
+                // confr[0].setCustomValidity("passwords do not match");
+                // confr.siblings("div.not-match").removeClass("d-none");
+                // confr.siblings("div.invalid-feedback").addClass("d-none");
 
             } else {
                 console.log("Pass is: the same ");
 
-                confr.removeClass("is-invalid");
-                confr[0].setCustomValidity("");
-                confr.siblings("div.not-match").addClass("d-none");
-                confr.siblings("div.invalid-feedback").removeClass("d-none");
+                // confr.removeClass("is-invalid");
+                // confr[0].setCustomValidity("");
+                // confr.siblings("div.not-match").addClass("d-none");
+                // confr.siblings("div.invalid-feedback").removeClass("d-none");
 
             }
-        
+        }
+
 }
 
 // reusable function for JSapi validation
