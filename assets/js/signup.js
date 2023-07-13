@@ -32,11 +32,6 @@
   console.log("working");
   //document.getElementById("").addEventListener("keyup", ()=>{alert("changin")});
 
-  const newUsername = document.getElementById("floatingInputUsername");
-  const newEmail = document.getElementById("new-email");
-  const newPass = document.getElementById("new-password");
-  const newPass2 = document.getElementById("new-password-confirm");
-
   // registration fields
   $('#username2').keyup(validateUser);
   $('#email2').keyup(validateEmail);
@@ -50,8 +45,8 @@
 
   function validateUser(event){
     // reset duplicate error message
-    $(event.target).siblings("div.duplicate").addClass("d-none");
-    event.target.setCustomValidity("");
+    // $(event.target).siblings("div.duplicate").addClass("d-none");
+    // event.target.setCustomValidity("");
 
 
 
@@ -103,31 +98,37 @@
 
 function validateEmail(event){
 
-    $(event.target).val(this.value.toLowerCase())
+    //$(event.target).val(this.value.toLowerCase())
 
     console.log("validator running with: " + $(event.target)[0].value.toLowerCase());
     //console.log(this);
 
-    getData("./assets/PHP/emailVerify.php", {email: (event.target.value).toLowerCase()})
+    getData("./assets/php/usersys/emailVerify.php", {email: (event.target.value).toLowerCase()})
         .then((availablility) => {
             console.log(event.target.checkValidity());
 
-            //let validity = event.target.checkValidity()
-            
 
+            //let validity = event.target.checkValidity()
+
+            if (basicValidation(event.target)){
+
+                console.log(" basic val passed, checking for dups")
+                
             if(!availablility) {
-                event.target.setCustomValidity( event.target.value + "database duplicate error");
-                $(event.target).addClass("is-invalid");
-                $(event.target).siblings("div.duplicate").removeClass("d-none");
-                $(event.target).siblings("div.invalid-feedback").addClass("d-none")
+                console.log(" email is available")
+                // event.target.setCustomValidity( event.target.value + "database duplicate error");
+                // $(event.target).addClass("is-invalid");
+                // $(event.target).siblings("div.duplicate").removeClass("d-none");
+                // $(event.target).siblings("div.invalid-feedback").addClass("d-none")
 
             } else {
-                $(event.target).siblings("div.duplicate").addClass("d-none");
-                $(event.target).removeClass("is-invalid");
-                $(event.target).siblings("div.invalid-feedback").removeClass("d-none");
-                event.target.setCustomValidity("");
+                // $(event.target).siblings("div.duplicate").addClass("d-none");
+                // $(event.target).removeClass("is-invalid");
+                // $(event.target).siblings("div.invalid-feedback").removeClass("d-none");
+                // event.target.setCustomValidity("");
 
             }
+        }
         });
 }
 
@@ -163,6 +164,9 @@ function validatePassword(event){
 // reusable function for JSapi validation
 
 function basicValidation(e){
+    $(e).siblings("div.duplicate").addClass("d-none");
+    e.setCustomValidity("");
+    
     if (e.checkValidity()){
         console.log("basic validation passed removing error message");
         $(e).siblings("div.invalid-feedback").addClass("d-none");
