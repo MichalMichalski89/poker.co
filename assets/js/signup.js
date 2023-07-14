@@ -73,15 +73,12 @@
                 $(event.target).siblings("div.duplicate").removeClass("d-none");
                 $(event.target).siblings("div.invalid-feedback").addClass("d-none");
                 $(event.target).siblings("div.valid-feedback").addClass("d-none");
-                
-                
                 console.log("duplicates found")
 
             } else {
                 $(event.target).siblings("div.duplicate").addClass("d-none");
                 $(event.target).siblings("invalid-feedback").addClass("d-none");
                 event.target.setCustomValidity("");
-
                 console.log("NO duplicates found")
             }
         });      
@@ -135,7 +132,6 @@ function validateEmail(event){
 function validatePassword(event){
     console.log("validating password")
     if (basicValidation(event.target)){
-        
     
     let pass = $("#password2");
     let confr = $("#confirm-password");
@@ -162,6 +158,12 @@ function validatePassword(event){
         }
 
 }
+
+
+
+
+
+
 
 // reusable function for JSapi validation
 
