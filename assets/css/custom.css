@@ -13,7 +13,6 @@
     padding-inline-start: unset;
 }
 
-
 /* fixing logo classes to work with h1 instead of img */
 .logo{
     font-size: 3rem;
@@ -57,3 +56,43 @@
     z-index: 19;
 
 }
+
+/* fixing modal padding-right */
+.modal-open, .modal {
+padding-right: 0px !important;
+}
+
+/* fixing boots nav menu toggle  */
+nav.navbar.bootsnav .navbar-toggle{
+    position: fixed;
+    right: 10%;
+}
+
+/* rough fix of loader alignment */
+.loader{
+    left: 52%;
+}
+
+
+/* scrollbar customisation */
+
+::-webkit-scrollbar-track
+{
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+	/* border-radius: 10px; */
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 14px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
