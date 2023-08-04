@@ -96,3 +96,8 @@ nav.navbar.bootsnav .navbar-toggle{
 	background-color: #555;
 }
 
+/* modal scroll fix */
+
+.modal-open{
+    overflow: visible;
+}
