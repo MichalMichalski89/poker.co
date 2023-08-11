@@ -70,7 +70,8 @@ nav.navbar.bootsnav .navbar-toggle{
 
 /* rough fix of loader alignment */
 .loader{
-    left: 52%;
+    width: auto;
+    height: auto;
 }
 
 
@@ -99,5 +100,5 @@ nav.navbar.bootsnav .navbar-toggle{
 /* modal scroll fix */
 
 .modal-open{
-    overflow: visible;
+    overflow: initial;
 }

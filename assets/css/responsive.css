@@ -228,7 +228,9 @@
   .post-comment .author a{font-size: 14px;}
   .counter-wrap{margin: 0px;}
   nav.navbar.bootsnav.navbar-fixed{height:auto;}
-	nav.navbar.bootsnav.navbar-transparent .logo, .logo{text-align: left;height: 60px;}
+	nav.navbar.bootsnav.navbar-transparent .logo, .logo{ 
+		/* text-align: left; */
+		height: 60px; }
 	.footer-height {display: none;}
 	.testimonial .slick-arrow {display: none;visibility: hidden;}
 	[class*="col-"] > .team-member-container {margin-top: 20px;margin-bottom: 20px;}
