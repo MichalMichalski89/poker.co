@@ -112,7 +112,7 @@
                 <!-- LAYERS -->
                 <!-- LAYER NR. 5 -->
                 <div class="tp-caption  " id="slide-11-layer-9" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-width="full-proportional" data-height="full-proportional" data-whitespace="nowrap" data-type="image" data-basealign="slide" data-responsive_offset="off" data-wrapper_class="tp-nopointer" data-responsive="off" data-frames='[{"delay":600,"speed":1500,"frame":"0","from":"sX:1;sY:1;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":1500,"frame":"999","to":"opacity:0;","ease":"Power4.easeOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-blendmode="screen" style="z-index: 5; opacity: 0.4;">
-                  <img src="./assets/images/pexels-cottonbro-studio-6963304.jpg" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']" data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" width="1920" height="1080" data-no-retina>
+                  <img src="./assets/images/cards-2343261_960_720.jpg" alt="" data-ww="['full-proportional','full-proportional','full-proportional','full-proportional']" data-hh="['full-proportional','full-proportional','full-proportional','full-proportional']" width="1920" height="1080" data-no-retina>
                 </div>
                 <!-- LAYER NR. 6 -->
                 <div class="tp-caption   tp-resizeme" id="slide-11-layer-10" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-70','-100','-100','-100']" data-fontsize="['80','70','50','45']" data-lineheight="['80','70','50','45']" data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" data-responsive_offset="on" data-wrapper_class="tp-nopointer" data-frames='[{"delay":500,"split":"chars","splitdelay":0.1,"speed":300,"frame":"0","from":"y:[-100%];sX:1;sY:2;opacity:0;fb:10px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"auto:auto;fb:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[20,20,20,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,20,20,20]" data-blendmode="exclusion" style="z-index: 6; white-space: nowrap;font-weight: 800; color: rgba(255,255,255,0.85);font-family: 'Raleway', sans-serif;text-transform:uppercase;">Players Wanted </div>
@@ -125,7 +125,8 @@
               </li>
               <!-- /SLIDE 2  -->
             </ul>
-            <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+            <div class="tp-bannertimer tp-bottom" ></div>
+                  <!-- style="visibility: hidden !important;" -->
           </div>
         </div>
       </div>
@@ -672,7 +673,7 @@
             jsFileLocation: "revolution/js/",
             sliderLayout: "fullscreen",
             dottedOverlay: "none",
-            delay: 4000,
+            delay: 5000,
             particles: {
               startSlide: "first",
               endSlide: "last",
@@ -799,13 +800,13 @@
             spinner: "off",
             stopLoop: "on",
             stopAfterLoops: 0,
-            stopAtSlide: 0,
+            stopAtSlide: false,
             shuffle: "off",
             autoHeight: "off",
             fullScreenAutoWidth: "off",
             fullScreenAlignForce: "off",
             fullScreenOffsetContainer: "",
-            fullScreenOffset: "60px",
+            fullScreenOffset: "0px", //60px
             disableProgressBar: "off",
             hideThumbsOnMobile: "off",
             hideSliderAtLimit: 0,
@@ -815,7 +816,7 @@
             fallbacks: {
               simplifyAll: "off",
               nextSlideOnWindowFocus: "off",
-              disableFocusListener: false,
+              disableFocusListener: true,
             }
           });
         }
