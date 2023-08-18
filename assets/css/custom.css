@@ -102,3 +102,30 @@ nav.navbar.bootsnav .navbar-toggle{
 .modal-open{
     overflow: initial;
 }
+
+/* dropdowns fix*/
+
+.dropdown-menu{
+    min-width:auto;
+    width: unset !important;
+}
+
+.open>.dropdown-menu {
+    display: block!important;
+    text-align: center;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
+}
+@media (max-width:1024px){
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
+    text-decoration:underline;
+}}
+
+/* fix for tile rendering*/
+.leaflet-tile-container img {
+    width: 256.75px !important;
+    height: 256.75px !important;
+}

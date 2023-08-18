@@ -57,24 +57,48 @@
           <!--== Collect the nav links, forms, and other content for toggling ==-->
           <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
+
               <li>
                 <a class="page-scroll" href="#about">About</a>
               </li>
+
               <li>
-                <a class="page-scroll" href="#venues">Venues</a>
+                <a class="page-scroll" href="#services">Services</a>
               </li>
+
+              <!-- <li>
+                <a class=" dropdown-toggle" href="#venues">Venues</a>
+                
+              </li>
+
               <li>
-                <a class="page-scroll" href="#boards">Leaderboards</a>
+                <a class="page-scroll" href="#boards">Points</a>
               </li>
+
               <li>
                 <a class="page-scroll" href="#rules">Rules</a>
               </li>
+-->
+              
               <li>
-                <a class="page-scroll" href="#contact">Contact</a>
-              </li>
+
+                  <a data-toggle="dropdown" href="#">Venues</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="">
+                    <li>Venue map</li>
+                    <li>Join our</li>
+                    <li>3</li>
+                  </ul>
+
+            </li>
+
+            <li>
+              <a class="page-scroll" href="#contact">Contact</a>
+            </li> 
+
               <li>
-                <a class="page-scroll" style="text-decoration: underline;" data-toggle="modal" data-target="#myModal" href="#myModal">Log in</a>
+                <a class="page-scroll" style="text-decoration: underline;" data-toggle="modal" data-target="#myModal" href="#myModal">Log in / Register</a>
               </li>
+
             </ul>
           </div>
           <!--== /.navbar-collapse ==-->
@@ -146,6 +170,7 @@
                   <h4 class="default-color">Our Mission</h4>
                   <h1>About Us</h1>
                 </div>
+
                 <p> We strive to help Pubs enhance their patrons' nights out by providing casino style poker experiences </p>
                 <p>Having played a lot of pub poker in dozens of venues over the years and directed games enabled by what are now our competitors, We areconfident in that We have put together an offer which is simply TOO GOOD TO TURN DOWN! </p>
                 <p class="mt-30">
@@ -366,6 +391,13 @@
               <h4 class="default-color">Find a game</h4>
               <h1 class="white-color">Venues</h1>
               <p> Each of our client venues is represented by a marker on the map below. The venues represented by green markers are those which are 'live' and host a weekly poker game. The blue markers represent venues which are 'awaiting players', register interest in playing at </p>
+              <div>
+                <div class="extra-marker-square-green extra-marker" style="position: unset !important; display: inline-block;"><svg style="color: #fff;" class="svg-inline--fa fa-beer-mug-empty" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="beer-mug-empty" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432 96H384V64c0-17.67-14.33-32-32-32H64C46.33 32 32 46.33 32 64v352c0 35.35 28.65 64 64 64h224c35.35 0 64-28.65 64-64v-32.08l80.66-35.94C493.5 335.1 512 306.5 512 275V176C512 131.8 476.2 96 432 96zM160 368C160 376.9 152.9 384 144 384S128 376.9 128 368v-224C128 135.1 135.1 128 144 128S160 135.1 160 144V368zM224 368C224 376.9 216.9 384 208 384S192 376.9 192 368v-224C192 135.1 199.1 128 208 128S224 135.1 224 144V368zM288 368c0 8.875-7.125 16-16 16S256 376.9 256 368v-224C256 135.1 263.1 128 272 128S288 135.1 288 144V368zM448 275c0 6.25-3.75 12-9.5 14.62L384 313.9V160h48C440.9 160 448 167.1 448 176V275z"></path></svg></div>
+                <span> - Live Venue </span>                
+                <div class="extra-marker-square-blue extra-marker" style="position: unset !important; display: inline-block;"><svg style="color: #fff;" class="svg-inline--fa fa-beer-mug-empty" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="beer-mug-empty" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M432 96H384V64c0-17.67-14.33-32-32-32H64C46.33 32 32 46.33 32 64v352c0 35.35 28.65 64 64 64h224c35.35 0 64-28.65 64-64v-32.08l80.66-35.94C493.5 335.1 512 306.5 512 275V176C512 131.8 476.2 96 432 96zM160 368C160 376.9 152.9 384 144 384S128 376.9 128 368v-224C128 135.1 135.1 128 144 128S160 135.1 160 144V368zM224 368C224 376.9 216.9 384 208 384S192 376.9 192 368v-224C192 135.1 199.1 128 208 128S224 135.1 224 144V368zM288 368c0 8.875-7.125 16-16 16S256 376.9 256 368v-224C256 135.1 263.1 128 272 128S288 135.1 288 144V368zM448 275c0 6.25-3.75 12-9.5 14.62L384 313.9V160h48C440.9 160 448 167.1 448 176V275z"></path></svg></div>
+                <span> - Prospect Venue: Awaiting players </span>  
+              </div>
+              
             </div>
           </div>
           <div id="map" class="col-md-8 centerize-col text-center"></div>
