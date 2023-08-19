@@ -106,23 +106,42 @@ nav.navbar.bootsnav .navbar-toggle{
 /* dropdowns fix*/
 
 .dropdown-menu{
-    min-width:auto;
-    width: unset !important;
+     width: 100% !important; 
+    min-width: 100%!important;
+    float: unset !important;
+    margin:auto;
+    display: block !important;
+    left: 50% !important;
+    transform: translateX(-50%)!important;
+    margin-top: 1px !important;
+    text-align: center;
+    /* margin-left: 50px;
+    padding: 50px; */
 }
+
+.dropdown:hover{
+    background-color: white!important;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.08);
+    opacity: 1;
+} 
 
 .open>.dropdown-menu {
     display: block!important;
     text-align: center;
 }
 
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+.open>.dropdown-menu>li {
+    padding: 10px;
+}
+
+/* .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: transparent;
 }
 @media (max-width:1024px){
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: transparent;
     text-decoration:underline;
-}}
+}} */
 
 /* fix for tile rendering*/
 .leaflet-tile-container img {
