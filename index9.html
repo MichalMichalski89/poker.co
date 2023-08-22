@@ -59,11 +59,23 @@
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut">
 
               <li>
-                <a class="page-scroll" href="#about">About</a>
-              </li>
+
+                <a data-toggle="dropdown">Home</a>
+                
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                  <li>
+                    <a href="#about">About us</a>
+                  </li>
+                  <li>
+                    <a href="./index10.html">Poker at your Venue</a>
+                  </li>
+
+                </ul>
+
+          </li>
 
               <li>
-                <a class="page-scroll" href="#services">Players</a>
+                <a class="dropdown page-scroll" href="#players">Players</a>
               </li>
 
               <!-- <li>
@@ -82,12 +94,14 @@
               
             <li>
 
-                  <a data-toggle="dropdown-center" href="#">Where to play</a>
+                  <a data-toggle="dropdown" href="#">Where to play</a>
                   
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    
                     <li>
                       <a>Venue map</a>
                     </li>
+                    
                     <li>
                       <a>Poker at your Venue</a>
                     </li>
