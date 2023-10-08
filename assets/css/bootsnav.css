@@ -1451,7 +1451,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         content: "\f3d3";
         float: right;
         font-size: 16px;
-        margin-left: 10px;
+        margin-left: 0px;
     }
 
     nav.navbar.bootsnav li.dropdown.on > a.dropdown-toggle:before{
@@ -1510,6 +1510,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         border-bottom: solid 1px #e0e0e0;
         padding: 10px 0;
         color: #6f6f6f;
+        text-align: center;
     }
 
     nav.navbar.bootsnav ul.nav ul.dropdown-menu li a:hover,
