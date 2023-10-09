@@ -112,6 +112,9 @@ padding-right: 0px !important;
 
 /* dropdowns fix*/
 
+.dropdown-toggle::before { 
+    content: none !important;
+} 
 /* .dropdown-menu{
     width: 100% !important; 
     min-width: 8vw!important;
