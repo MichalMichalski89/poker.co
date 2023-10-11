@@ -31,7 +31,7 @@ prefix: 'fa'
 var greyMarker = L.ExtraMarkers.icon({
 icon: 'fa-beer-mug-empty',
 markerColor: 'blue',
-shape: 'penta',
+shape: 'square',
 prefix: 'fa'
 });
 
@@ -39,3 +39,4 @@ L.marker([51.54918591996306, -0.618029159994078], {icon: redMarker}).addTo(map)
 .bindPopup('<b><u>The Emperor</u></b>' + '<br> Game night: <b>Monday</b>, <b>7pm start</b>' + '<br> Address: <b>Blackpond Ln, Slough SL2 3EG</b>');
 	
 L.marker([51.60217722041262, -0.6334146356043768], {icon: greyMarker}).addTo(map)
+.bindPopup('<b><u>The Swan</u></b>' + '<br> Game night: <b>Sunday</b>, <b>7pm start</b>' + '<br> Address: <b>Blackpond Ln, Slough SL2 3EG</b>');

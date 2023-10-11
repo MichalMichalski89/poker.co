@@ -63,10 +63,10 @@ padding-right: 0px !important;
 }
 
 /* fixing boots nav menu toggle  */
-/* nav.navbar.bootsnav .navbar-toggle{
+ nav.navbar.bootsnav .navbar-toggle{
     position: fixed;
     right: 10%;
-} */
+} 
 
 /* rough fix of loader alignment */
 .loader{
