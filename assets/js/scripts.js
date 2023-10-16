@@ -3,6 +3,7 @@
 const map = L.map('map', {
 	center: [51.54, -0.61],
 	zoom: 10,	
+	scrollWheelZoom: false,
 	fullscreenControl: true,
 	fullscreenControlOptions: {
 	  position: 'topleft'
@@ -15,8 +16,8 @@ minZoom: '9'}).addTo(map);
 
 
 // disallow dragging out of map
-const southWest = L.latLng(51.13, 0.26),
-	northEast = L.latLng(51.84, -1.62);
+const southWest = L.latLng(51.195714773153725, -0.1660487313749751),
+	northEast = L.latLng(51.904867277536745, -1.1469383179205548);
 const bounds = L.latLngBounds(southWest, northEast);
 	map.setMaxBounds(bounds);
 
@@ -35,8 +36,18 @@ shape: 'square',
 prefix: 'fa'
 });
 
-L.marker([51.54918591996306, -0.618029159994078], {icon: redMarker}).addTo(map)
-.bindPopup('<b><u>The Emperor</u></b>' + '<br> Game night: <b>Monday</b>, <b>7pm start</b>' + '<br> Address: <b>Blackpond Ln, Slough SL2 3EG</b>');
+L.marker([51.48072780946211, -0.6061361693123507], {icon: redMarker}).addTo(map)
+.bindPopup('<b><u>The Corner House</u></b>' + '<br> Game night: <b>Wednesday, 7pm start</b>' + '<br> Address: <b>22 Sheet St, Windsor SL4 1BG </b>');
 	
 L.marker([51.60217722041262, -0.6334146356043768], {icon: greyMarker}).addTo(map)
-.bindPopup('<b><u>The Swan</u></b>' + '<br> Game night: <b>Sunday</b>, <b>7pm start</b>' + '<br> Address: <b>Blackpond Ln, Slough SL2 3EG</b>');
+.bindPopup('<b><u>The Swan</u></b>' + '<br> Game night: <b>TBC</b>' + '<br> Address: <b>60 London End, Beaconsfield HP9 2JD </b>');
+
+L.marker([51.60153276104829, -0.7090311693123507], {icon: greyMarker}).addTo(map)
+.bindPopup('<b><u>The Cherry Tree</u></b>' + '<br> Game night: <b>TBC</b>' + '<br> Address: <b>5 Straight Bit, Flackwell Heath, High Wycombe HP10 9LS</b>');
+
+L.marker([51.53375035588169, -0.41654027671912314], {icon: greyMarker}).addTo(map)
+.bindPopup('<b><u>Hayes RFC</u></b>' + '<br> Game night: <b>TBC</b>' + '<br> Address: <b>Kingshill Ave, Hayes UB4 8BZ </b>');
+
+L.marker([51.45002841492482, -0.9385975846561755], {icon: greyMarker}).addTo(map)
+.bindPopup('<b><u>Palmer Tavern</u></b>' + '<br> Game night: <b>Thursday, 7.30pm start</b>' + '<br> Address: <b>128 Wokingham Rd, Reading RG6 1JL</b>');
+
