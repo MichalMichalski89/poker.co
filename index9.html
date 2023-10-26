@@ -32,7 +32,7 @@
     <!-- Register form sheet-->
     <link rel="stylesheet" href="./assets/css/styles.css">
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#navbar-menu" data-offset="500">
     <!--== Loader Start ==-->
     <div id="loader-overlay">
       <div class="loader">
@@ -47,7 +47,7 @@
         <div class="container">
           <!--== Start Header Navigation ==-->
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+            <button type="button" id="navbar-toggler" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
               <i class="tr-icon ion-android-menu"></i>
             </button>
             <div class="logo">
@@ -64,28 +64,32 @@
             <ul class="nav navbar-nav navbar-center" data-in="fadeIn" data-out="fadeOut" >
 
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="true">HOME</a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="true">About</a>
                 <ul class="dropdown-menu" role="menu">
 
-                  <li><a class="page-scroll" href="#about">WHO WE ARE</a></li>
-                  <li><a class="page-scroll" href="#about">WHAT WE DO</a></li>
-                  <li><a class="page-scroll" href="#about">HOW IT WORKS</a></li>
+                  <li><a class="page-scroll" href="#about">About Us</a></li>
+                  <li><a class="page-scroll" href="#">What We Do</a></li>
+                  <li><a class="page-scroll" href="#">Get Involved</a></li>
+                  <li><a class="page-scroll" href="#">BECOME A HOST</a></li>
+                  <li><a class="page-scroll" href="#">PARTNER WITH US</a></li>
+
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="true">Players</a>
+                <ul class="dropdown-menu" role="menu">
+
+                  <li><a class="page-scroll" href="#">How to join</a></li>
+                  <li><a class="page-scroll" href="#">HOW TO JOIN</a></li>
+                  <li><a class="page-scroll" href="#">HOW IT WORKS</a></li>
 
                 </ul>
               </li>
 
               <li><a class="page-scroll" href="#venues">VENUES</a></li>
 
-              <li><a class="page-scroll" href="#venues">LEAGUE</a></li>
-
-
-              <li class="dropdown">
-                <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LEADERBOARD</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                </ul>
-              </li>
+              <li><a class="page-scroll" href="#boards">Leaderboards</a></li>
               <li>
                 <a class="page-scroll" href="#contact">Contact</a>
               </li>
@@ -157,15 +161,15 @@
 
 
       <!--== Who We Are Start ==-->
-      <div class="white-bg pt-0 pb-0 sm-pt-50 sm-pb-50 about-section" id="about">
+      <div class="white-bg pt-0 pb-0 sm-pt-50 sm-pb-50 about-section" >
         <div class="col-md-6 col-sm-6 bg-flex bg-flex-right">
           <div class="bg-flex-holder bg-flex-cover" style="background-image: url(https://images.unsplash.com/photo-1604345250885-11f528eec3ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1519&q=80);"></div>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid" id="about">
           <div class="col-md-6 col-sm-6">
             <div class="col-inner spacer text-left wow fadeInRight" data-wow-delay="0.2s">
               <div class="mission-section xs-mb-80">
-                <div class="section-title">
+                <div class="section-title" >
                   <h4 class="default-color">Who We Are</h4>
                   <h1>About Us</h1>
                 </div>
@@ -402,8 +406,8 @@
 
     <!-- == Venues == -->
     <div class="dark-bg" id="venues">
-      <div class="container">
-        <div class="pt-120 pb-120">
+      <div class="container" >
+        <div class="pt-120 pb-120 sm-pt-50 sm-pb-50">
           <div class="centerize-col text-center">
             <div class="section-title">
               <h4 class="default-color">Find a game</h4>
@@ -433,10 +437,10 @@
 
 
     <!-- == Leaderboards == -->
-    <div class="container">
+    <div class="container" >
       <div class="pt-100 pb-120">
         <div class="col-md-8 centerize-col text-center">
-          <div class="section-title pt-20"  id="boards">
+          <div class="section-title pt-20" id="boards">
             <h4 class="default-color">Track your score.</h4>
             <h1>Leaderboards</h1>
             <p> Create a player account and collect points each time you play at your pub and strive to qualify for a regional final to compete against the players from other venues and win the season's trophy and a guaranteed cash prize </p>
@@ -494,11 +498,11 @@
 
 
     <!--== Contact Start ==-->
-    <div class="white-bg pt-120 pb-120" id="contact">
+    <div class="white-bg pt-120 pb-120" >
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="section-title text-left">
+            <div class="section-title text-left" id="contact">
               <h4 class="default-color mt-0">Let's talk with us</h4>
               <h1>Contact Us</h1>
             </div>

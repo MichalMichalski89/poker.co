@@ -1,3 +1,22 @@
+// event listener to collapse menu on link click
+
+
+// const menuToggle = document.getElementById('navbarSupportedContent')
+// const bsCollapse = new bootstrap.Collapse(menuToggle)
+$('document').ready(function(){
+
+
+	document.querySelectorAll('#navbar-menu .page-scroll').forEach((l) => {
+		l.addEventListener('click', function() {
+			
+			console.log('aaaaaaaaaaaa')});
+	});
+})
+
+
+
+
+
 // innitialise map
 
 const map = L.map('map', {
@@ -50,4 +69,11 @@ L.marker([51.53375035588169, -0.41654027671912314], {icon: greyMarker}).addTo(ma
 
 L.marker([51.45002841492482, -0.9385975846561755], {icon: greyMarker}).addTo(map)
 .bindPopup('<b><u>Palmer Tavern</u></b>' + '<br> Game night: <b>Thursday, 7.30pm start</b>' + '<br> Address: <b>128 Wokingham Rd, Reading RG6 1JL</b>');
+
+
+// calc player efficiency
+function playerEff(players, position){
+	var eff  = (100/(players-1))*(players-position)
+	return eff;
+}
 

@@ -20,9 +20,13 @@
     color: white;
 }
 
- #top-logo{
+#top-logo{
     height: auto;
  }
+
+#navbar-menu{
+    max-height: 75vh;
+}
 
 @media (min-width:1024px){
 
@@ -41,6 +45,9 @@
         overflow-y: hidden !important; 
     }
 }
+
+
+
 
 .board-select {
     color: unset;
@@ -110,11 +117,23 @@ padding-right: 0px !important;
     height: 256.75px !important;
 }
 
-/* dropdowns fix*/
+/* dropdowns fixes*/
 
 .dropdown-toggle::before { 
     content: none !important;
 } 
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+    background-color: transparent;
+}
+
+
+/* scrollspy fix */
+nav.navbar.bootsnav.dark ul.nav > li.active > a{
+    color:#1ca7ec !important;
+}
+
+
 /* .dropdown-menu{
     width: 100% !important; 
     min-width: 8vw!important;
