@@ -119,9 +119,9 @@ padding-right: 0px !important;
 
 /* dropdowns fixes*/
 
-.dropdown-toggle::before { 
+/* .dropdown-toggle::before { 
     content: none !important;
-} 
+}  */
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
     background-color: transparent;

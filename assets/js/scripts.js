@@ -71,6 +71,14 @@ L.marker([51.45002841492482, -0.9385975846561755], {icon: greyMarker}).addTo(map
 .bindPopup('<b><u>Palmer Tavern</u></b>' + '<br> Game night: <b>Thursday, 7.30pm start</b>' + '<br> Address: <b>128 Wokingham Rd, Reading RG6 1JL</b>');
 
 
+var ass = [[54.559322, -5.767822], [56.1210604, -3.021240]];
+
+// create an orange rectangle
+L.rectangle(ass, {color: "#ff7800", weight: 1}).addTo(map);
+
+
+
+
 // calc player efficiency
 function playerEff(players, position){
 	var eff  = (100/(players-1))*(players-position)
