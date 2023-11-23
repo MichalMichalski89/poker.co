@@ -133,6 +133,9 @@ nav.navbar.bootsnav.dark ul.nav > li.active > a{
     color:#1ca7ec !important;
 }
 
+/* fixing visited submenu */ 
+
+
 
 /* .dropdown-menu{
     width: 100% !important; 
@@ -163,6 +166,8 @@ nav.navbar.bootsnav.dark ul.nav > li.active > a{
     background-color: transparent!important;
     color: #555;
 } */
+
+
 
 /* .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: transparent;
