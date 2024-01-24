@@ -129,7 +129,7 @@ nav.navbar.bootsnav ul.nav li.active > a:hover,
 nav.navbar.bootsnav ul.nav li.active > a:focus,
 nav.navbar.bootsnav ul.nav li.active > a{
     background-color: transparent;
-    color:#fff;
+    /* color:#fff; */
 }
 
 nav.navbar.bootsnav .navbar-toggle{
