@@ -3,7 +3,7 @@
 
 // const menuToggle = document.getElementById('navbarSupportedContent')
 // const bsCollapse = new bootstrap.Collapse(menuToggle)
-$('document').ready(function(){
+$(function(){
 	document.querySelectorAll('#navbar-menu .page-scroll').forEach((l) => {
 		l.addEventListener('click', function() {
 			console.log('click event listener')});
