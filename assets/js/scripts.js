@@ -3,14 +3,19 @@
 
 // const menuToggle = document.getElementById('navbarSupportedContent')
 // const bsCollapse = new bootstrap.Collapse(menuToggle)
-$(function(){
-	document.querySelectorAll('#navbar-menu .page-scroll').forEach((l) => {
-		l.addEventListener('click', function() {
-			console.log('click event listener')});
-			
-	});
-})
 
+// $(function(){
+// 	document.querySelectorAll('#navbar-menu .page-scroll').forEach((l) => {
+// 		l.addEventListener('click', function() {
+// 			console.log('navbar link clicked')});
+// 			$('#navbar-menu').collapse('hide');
+			
+// 	});
+// });
+
+$(document).keydown(function () {
+	$('#navbar-menu').collapse('hide');
+});
 
 
 
