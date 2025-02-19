@@ -14,10 +14,29 @@
 }
 
 /* fixing logo classes to work with h1 instead of img */
+/* .logo{
+    font-size: 5rem;
+    line-height: 2rem;
+    font-family: "Righteous", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+} */
+
+
+/* .logo span:nth-child(3){
+    font-size: 3rem;
+} */
 .logo{
     font-size: 3rem;
-    font-family: blendascript, arial;
+    line-height: 1.5rem;
+    font-family: "Righteous", serif;
+    font-weight: 400;
+    font-style: normal;
     color: white;
+}
+.logo span:nth-child(3){
+    font-size: 3rem;
 }
 
 #top-logo{
@@ -32,9 +51,13 @@
 
     nav.navbar.bootsnav.navbar-fixed.navbar-transparent .logo{
     color: black;
-    margin-bottom: 0.8rem!important;
+    font-size: 5rem;
+    line-height: 2rem;
+    /* margin-bottom: 0.8rem!important; */
     }
-
+    .logo span:nth-child(3){
+        font-size: 3rem;
+    } 
 } 
 @media (max-width:1024px){
     /* div.col-half.right{
@@ -44,6 +67,14 @@
         max-height: 50vh; 
         overflow-y: hidden !important; 
     }
+    /* .logo{
+        font-size: 3rem;
+        line-height: 1.5rem;
+    }
+    .logo span:nth-child(3){
+        font-size: 1.8rem;
+    } */
+
 }
 
 
