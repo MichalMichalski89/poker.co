@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user_id']);
+$username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +40,17 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/custom.css">
     <!-- Register form sheet-->
     <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      <?php if ($isLoggedIn): ?>
+        console.log("User is logged in as '<?php echo $username; ?>'");
+      <?php else: ?>
+        console.log("User is not logged in.");
+      <?php endif; ?>
+    });
+  </script>
+
   </head>
   <body data-spy="scroll" data-target="#navbar-menu" data-offset="500">
     <!--== Loader Start ==-->
@@ -86,10 +101,23 @@
               <li>
                 <a class="page-scroll" href="#contact"><i class="fa-regular fa-envelope"></i><span> Contact</span></a>
               </li>
-              <li>
+              <!-- <li>
                 <a class="page-scroll"  data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fas fa-user white" aria-hidden="true"></i> <span style="text-decoration: underline;">LOG IN</span></a>
-              </li>
-
+              </li> -->
+              
+              <?php if (isset($_SESSION['user_id'])): ?>
+                <script>console.log("User IS logged in.");</script>
+                <li>
+                    <a class="page-scroll"  data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fas fa-user white" aria-hidden="true"></i> <span style="text-decoration: underline;">LOGGED IN</span></a>
+                </li>
+                    <!-- <li><a href="dashboard.php">Logged in as <?php //echo htmlspecialchars($_SESSION['username']); ?></a></li> -->
+                    <!-- <li><a href="logout.php">Logout</a></li> -->
+              <?php else: ?>
+                <script>console.log("User is NOT logged in.");</script>
+                <li>
+                    <a class="page-scroll"  data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fas fa-user white" aria-hidden="true"></i> <span style="text-decoration: underline;">LOG IN</span></a>
+                </li>
+              <?php endif; ?>
             </ul>
           </div>
           <!--== /.navbar-collapse ==-->
@@ -641,7 +669,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 centerize-col">
-                  <form id="login-form" class="needs-validation" action="" method="post" role="form" style="display: block;">
+                  <form id="" class="" action="" method="post" role="form" style="display: block;">
                     <div class="form-group">
                       <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                       <div class="valid-feedback d-none"> Looks good! </div>
@@ -658,7 +686,7 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
-                          <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="btn btn-lg btn-dark" value="Log In">
+                          <input type="submit" name="" id="" tabindex="4" class="btn btn-lg btn-dark" value="Log In">
                         </div>
                       </div>
                     </div>
@@ -687,14 +715,14 @@
                       <div class="invalid-feedback d-none"> A First has to be between 2 and 16 characters. </div>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="last name" id="firstname" pattern=".{2,16}" tabindex="1" class="form-control" placeholder="Last Name" value="" required>
+                      <input type="text" name="last name" id="lastname" pattern=".{2,16}" tabindex="1" class="form-control" placeholder="Last Name" value="" required>
                       <div class="valid-feedback d-none"> Looks good! </div>
                       <div class="invalid-feedback d-none"> A username has to be between 3 and 16 characters. </div>
 
                     </div>
 
                     <div class="form-group">
-                      <input type="tel" name="phone" id="phone" pattern="^\+?[0-9\s\-]{7,15}$" tabindex="1" class="form-control" placeholder="Phone, eg: +44 7712345678">
+                      <input type="tel" name="phone" id="regphone" pattern="^\+?[0-9\s\-]{7,15}$" tabindex="1" class="form-control" placeholder="Phone, eg: +44 7712345678">
                       <div class="valid-feedback d-none"> Looks good! </div>
                       <div class="invalid-feedback d-none"> Something is wrong, use this pattern: +44 7712345678 </div>
                     </div>

@@ -24,28 +24,28 @@ set_exception_handler('exception_handler');
 
 //mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-if (! preg_match("/.{3,16}/",$_POST["new-username"]))  {
+if (! preg_match("/.{3,16}/",$_POST["username"]))  {
     die("A username between 3 and 16 characters is required");
 }
 
-if (! filter_var($_POST["new-email"], FILTER_VALIDATE_EMAIL))  {
+if (! filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))  {
     die("Invalid email");
 }
 
-if (! preg_match("/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}/", $_POST["new-password"])) {
+if (! preg_match("/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}/", $_POST["password"])) {
     die("Password must be between 8 and 16 characters. <br> It must contain at least one upercase, one lowercase letter, and one digit");
 }
 
-if ($_POST["new-password"] !== $_POST["new-password-confirm"]) {
+if ($_POST["password"] !== $_POST["confirm-password"]) {
     die("Password fields must match");
 }
 
-$newPasswordHash = password_hash($_POST["new-password"], PASSWORD_DEFAULT);
+$newPasswordHash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-$mysqli = require "conn.php";
+$mysqli = require "../conn.php";
 
-$sql = "INSERT INTO users (username, email, password_hash)
-        VALUES (?, ?, ?)";
+$sql = "INSERT INTO users (username, email, password_hash, first_name, last_name, phone)
+        VALUES (?,?,?,?,?,?)";
 
 $stmt = $mysqli->stmt_init();
 
@@ -53,15 +53,23 @@ $stmt = $mysqli->stmt_init();
      die("SQL error: <br><br>" . $mysqli->error);
  } 
 
-$stmt->bind_param("sss",
-                    $_POST["new-username"],
-                    $_POST["new-email"],
-                    $newPasswordHash);
-
+$stmt->bind_param("ssssss",
+                    $_POST["username"],
+                    $_POST["email"],
+                    $newPasswordHash,
+                    $_POST["first_name"],
+                    $_POST["last_name"],
+                    $_POST["phone"],
+                );
 $stmt->execute();
 
-header("Location: ../reg-success.html");
-//echo $newPasswordHash;
+header( "refresh:6;url=../../../index.html" );
+  echo 'You registered successfully, you should now be able to log in <br><br> We will take you back to the Home Page in 6 secs. <br><br> Or, you can just click <a href="../../../index.html">here</a> now.';
 
+
+//echo $newPasswordHash;
+// echo ("<br><br>");
 //echo $mysqli->error;
 // print_r($_POST);
+// sleep(3);
+// header("Location: ../../../index.html");

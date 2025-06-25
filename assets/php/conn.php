@@ -7,7 +7,7 @@
 
    // localdatabase name, username and password
 
-    $cd_dbname = "pokerco";
+    $cd_dbname = "inpubpoker_db";
     $cd_user = "root";
     $cd_password = "";
 

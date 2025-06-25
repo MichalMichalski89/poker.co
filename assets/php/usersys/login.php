@@ -1,36 +1,29 @@
 <?php
+echo "<script>console.log('session started');</script>"
+session_start();
+require '../conn.php'; // your PDO connection setup
 
-function console_log($output, $with_script_tags = true) {
-    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
-');';
-    if ($with_script_tags) {
-        $js_code = '<script>' . $js_code . '</script>';
-    }
-    echo $js_code;
+// Get form data
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Lookup user by username only
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username LIMIT 1");
+$stmt->execute(['username' => $username]);
+$user = $stmt->fetch();
+
+if ($user && password_verify($password, $user['password_hash'])) {
+    // Password is correct — start session
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['first_name'] = $user['first_name'];
+    // $_SESSION['role'] = $user['role']; // if you have roles
+
+    // Redirect to dashboard or home page
+    header("Location: dashboard.php");
+    exit;
+} else {
+    // Invalid login
+    echo "Invalid username or password.";
 }
-//console_log($_POST);
-
-$mysqli = require "conn.php";
-
-$sql = sprintf("SELECT * FROM users WHERE email ='%s'",
-$mysqli->real_escape_string($_POST["email"]));
-
-$result = $mysqli->query($sql);
-
-$user = $result->fetch_assoc();
-
-if ($user)  {
-    if (password_verify($_POST["password"], $user["password_hash"])) {
-        session_start();
-        $_SESSION["user_ID"] = $user["id"];
-        //console_log($user);
-        header("Location: ../test.php");
-    } else {
-        //var_dump($user);
-        //var_dump($_POST["password"]);
-    }
-} 
-else {
-    die("invalid login");
-}
-
+?>
