@@ -220,3 +220,11 @@ nav.navbar.bootsnav.dark ul.nav > li.active > a{
       display: block;
     }
   } */
+
+  .toast.show {
+    opacity: 1 !important;
+    display: block !important;
+    z-index: 11000;
+    bottom: 80px !important; /* shift up so not under slider controls */
+    right: 20px !important;
+  }

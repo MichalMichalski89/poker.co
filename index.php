@@ -1,5 +1,8 @@
 <?php
-session_start();
+require "assets/php/session_check.php";
+
+
+
 $isLoggedIn = isset($_SESSION['user_id']);
 $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
 ?>
@@ -40,13 +43,14 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
     <link rel="stylesheet" type="text/css" href="./assets/css/custom.css">
     <!-- Register form sheet-->
     <link rel="stylesheet" href="./assets/css/styles.css">
-
+    <!-- login js -->
+    <script src="assets/js/login.js" defer></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
       <?php if ($isLoggedIn): ?>
-        console.log("User is logged in as '<?php echo $username; ?>'");
+        console.log("User is logged in as: '<?php echo $username; ?> id: <?php echo $_SESSION['user_id']; ?>'");
       <?php else: ?>
-        console.log("User is not logged in.");
+        console.log("User is NOT logged in.");
       <?php endif; ?>
     });
   </script>
@@ -62,6 +66,7 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
     <!--== Loader End ==-->
     <!--== Wrapper Start ==-->
     <div class="wrapper">
+
       <!--== Header Start ==-->
       <nav class="navbar navbar-default navbar-fixed navbar-transparent dark bootsnav on no-full no-border brand-center">
         <div class="container">
@@ -71,7 +76,7 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
               <i class="tr-icon ion-android-menu"></i>
             </button>
             <div class="logo">
-              <a href="index.html">
+              <a href="index.php">
                 <h1 class="logo" id="top-logo"><span>inPub</span><br><span>poker</span></h1>
 
                 <!-- <h1 class="logo logo-scrolled" >PokerinPub.co.uk</h1> -->
@@ -106,12 +111,23 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
               </li> -->
               
               <?php if (isset($_SESSION['user_id'])): ?>
-                <script>console.log("User IS logged in.");</script>
-                <li>
-                    <a class="page-scroll"  data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fas fa-user white" aria-hidden="true"></i> <span style="text-decoration: underline;">LOGGED IN</span></a>
-                </li>
-                    <!-- <li><a href="dashboard.php">Logged in as <?php //echo htmlspecialchars($_SESSION['username']); ?></a></li> -->
-                    <!-- <li><a href="logout.php">Logout</a></li> -->
+               <script>console.log("User Izzz logged in.");</script>
+
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+                  <i class="fas fa-user white" aria-hidden="true"></i>
+                  <span id="username-link" style="text-decoration: underline; cursor: pointer;"><?php echo $username; ?></span>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="./dashboard/">Dashboard</a></li>
+                  <li><a href="assets/php/usersys/logout.php">Log out</a></li>
+                </ul>
+              </li>
+
+
+
+
               <?php else: ?>
                 <script>console.log("User is NOT logged in.");</script>
                 <li>
@@ -618,7 +634,7 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
             <div class="col-md-8 centerize-col text-center">
               <div class="footer-logo centerize-col text-center">
                 <h1 class="logo col-md-12 centerize-col text-center logo-display mb-3" style="color:white;">inPubpoker.com</h1>
-                <!-- <a href="index.html"><img src="assets/images/logo-white.png" class="img-responsive centerize-col" alt="Footer Logo"/></a></div> -->
+                <!-- <a href="index.php"><img src="assets/images/logo-white.png" class="img-responsive centerize-col" alt="Footer Logo"/></a></div> -->
                 <div class="copy-right">Copyright Poker in Pub 2023, All rights reserved.</div>
                 <ul class="social-media mt-30 float-none">
                   <li>
@@ -669,12 +685,14 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 centerize-col">
-                  <form id="" class="" action="" method="post" role="form" style="display: block;">
+
+                    <!-- login -->
+                    <div id="login-error" class="alert alert-danger d-none"></div>
+
+
+                  <form id="login-form" role="form" style="display: block;">
                     <div class="form-group">
                       <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                      <div class="valid-feedback d-none"> Looks good! </div>
-                      <div class="invalid-feedback d-none"> A username has to be between 3 and 16 characters. </div>
-                      <div class="d-none duplicate"> Username already taken. </div>
                     </div>
                     <div class="form-group">
                       <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
@@ -700,6 +718,8 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
                       </div>
                     </div>
                   </form>
+
+                  <!-- Register -->
                   <form id="register-form" action="assets/php/usersys/register.php" method="post" role="form" style="display: none;">
                     <div class="centerize-col">
                       <div class="form-group">
@@ -761,6 +781,7 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
     </div>
     <!--- modal end-->
 
+    
 
 
     <!--== Javascript Plugins ==-->
@@ -772,6 +793,7 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
     <script src="assets/js/scripts.js"></script>
     <script defer src="assets/js/all.min.js"></script>
     <script src="./assets/js/signup.js"></script>
+    <script src="assets/js/login-handler.js"></script>
     <!-- Paricle Add-On Files -->
     <link rel='stylesheet' href='revolution/css/revolution.addon.particles.css?ver=1.0.3' />
     <script src='revolution/js/revolution.addon.particles.min.js?ver=1.0.3'></script>
@@ -952,5 +974,6 @@ $username = $isLoggedIn ? addslashes($_SESSION['username']) : '';
     <!--== Javascript Plugins End ==-->
     <!-- 
 <script src="./v1/Bootstrap/bootstrap.bundle.min.js"></script> -->
+<?php require_once 'assets/php/session_print.php';?>
   </body>
 </html>

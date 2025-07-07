@@ -43,35 +43,40 @@ const southWest = L.latLng(51.195714773153725, -0.1660487313749751),
 const bounds = L.latLngBounds(southWest, northEast);
 	map.setMaxBounds(bounds);
 
-// markers
-var redMarker = L.ExtraMarkers.icon({
-icon: 'fa-beer-mug-empty',
-markerColor: 'green',
-shape: 'square',
-prefix: 'fa'
-});
+// Marker icons
+var blueMarker = L.ExtraMarkers.icon({
+	icon: 'fa-beer-mug-empty',
+	markerColor: 'green',
+	shape: 'square',
+	prefix: 'fa'
+  });
+  
+// Function to create a marker icon dynamically
+function createMarkerIcon(color) {
+  return L.ExtraMarkers.icon({
+    icon: 'fa-beer-mug-empty',
+    markerColor: color,
+    shape: 'square',
+    prefix: 'fa'
+  });
+}
 
-var greyMarker = L.ExtraMarkers.icon({
-icon: 'fa-beer-mug-empty',
-markerColor: 'blue',
-shape: 'square',
-prefix: 'fa'
-});
+// Fetch venue locations dynamically
+fetch('../assets/php/get_venues.php')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(venue => {
+      let markerIcon = createMarkerIcon(venue.marker_color || 'blue'); // fallback to 'blue' if undefined
 
-L.marker([51.48072780946211, -0.6061361693123507], {icon: redMarker}).addTo(map)
-.bindPopup('<b><u>The Corner House</u></b>' + '<br> Game night: <b>Wednesday, 7pm start</b>' + '<br> Address: <b>22 Sheet St, Windsor SL4 1BG </b>');
-	
-L.marker([51.60217722041262, -0.6334146356043768], {icon: greyMarker}).addTo(map)
-.bindPopup('<b><u>The Swan</u></b>' + '<br> Game night: <b>TBC</b>' + '<br> Address: <b>60 London End, Beaconsfield HP9 2JD </b>');
-
-L.marker([51.60153276104829, -0.7090311693123507], {icon: greyMarker}).addTo(map)
-.bindPopup('<b><u>The Cherry Tree</u></b>' + '<br> Game night: <b>TBC</b>' + '<br> Address: <b>5 Straight Bit, Flackwell Heath, High Wycombe HP10 9LS</b>');
-
-L.marker([51.53375035588169, -0.41654027671912314], {icon: greyMarker}).addTo(map)
-.bindPopup('<b><u>Hayes RFC</u></b>' + '<br> Game night: <b>TBC</b>' + '<br> Address: <b>Kingshill Ave, Hayes UB4 8BZ </b>');
-
-L.marker([51.45002841492482, -0.9385975846561755], {icon: greyMarker}).addTo(map)
-.bindPopup('<b><u>Palmer Tavern</u></b>' + '<br> Game night: <b>Thursday, 7.30pm start</b>' + '<br> Address: <b>128 Wokingham Rd, Reading RG6 1JL</b>');
+      L.marker([venue.lat, venue.lon], { icon: markerIcon })
+        .addTo(map)
+        .bindPopup(
+          '<b><u>' + venue.name + '</u></b>' +
+          (venue.address ? '<br> Address: <b>' + venue.address + '</b>' : '')
+        );
+    });
+  })
+  .catch(error => console.error('Error loading venue markers:', error));
 
 
 var ass = [[54.559322, -5.767822], [56.1210604, -3.021240]];
@@ -88,3 +93,41 @@ function playerEff(players, position){
 	return eff;
 }
 
+// root/index alerts
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Helper to get URL query parameters
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Helper to show an alert message
+  function showAlert(message, type = "info") {
+    const alertDiv = document.createElement("div");
+    alertDiv.className = `alert alert-${type} text-center`;
+    alertDiv.role = "alert";
+    alertDiv.style.position = "fixed";
+    alertDiv.style.top = "20px";
+    alertDiv.style.left = "50%";
+    alertDiv.style.transform = "translateX(-50%)";
+    alertDiv.style.zIndex = "9999";
+    alertDiv.textContent = message;
+
+    document.body.appendChild(alertDiv);
+
+    setTimeout(() => {
+      alertDiv.remove();
+    }, 2000);
+  }
+
+  // Check for session expired param
+  if (getQueryParam("session_expired") === "1") {
+    showAlert("Your session expired. Please log in again.", "warning");
+  }
+
+  // Check for successful registration param
+  if (getQueryParam("registered") === "1") {
+    showAlert("You registered successfully! Please log in below.", "success");
+  }
+});
