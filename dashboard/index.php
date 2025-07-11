@@ -111,6 +111,7 @@ window.addEventListener('DOMContentLoaded', () => {
     <title>inPubpoker Dashboard</title>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -206,8 +207,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 <!-- Add Venue section for Regional Manager -->
                 <?php if ($isRegionalManager): ?>
-                    <!-- Add Venue Button -->
-                    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addVenueModal"><i class="fas fa-plus"></i> Add Venue</button>
+                    <h3 class="h4 mb-4">Add/Edit Venues (as Regional Manager)</h3>
 
                     <!-- Venues Table with full details -->
                     <table class="table table-bordered">
@@ -257,6 +257,10 @@ window.addEventListener('DOMContentLoaded', () => {
                         <?php endforeach; ?>
                         </tbody>
                     </table>
+                    
+                    <!-- Add Venue Button -->
+                    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addVenueModal"><i class="fas fa-plus"></i> Add Venue</button>
+
                 <?php endif; ?>
 
 
@@ -406,6 +410,7 @@ window.addEventListener('DOMContentLoaded', () => {
 <div class="modal fade" id="manageVenueModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="manageVenueModalLabel">Manage Venue</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -416,7 +421,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         <div class="accordion" id="venueManageAccordion">
 
-         
             <!-- Venue Games -->
             <div class="card">
             <div class="card-header" id="headingGames">
@@ -426,15 +430,33 @@ window.addEventListener('DOMContentLoaded', () => {
                 </button>
                 </h6>
             </div>
-            <div id="collapseGames" class="collapse show" data-parent="#venueManageAccordion">
+
+            <div id="collapseGames" class="collapse" data-parent="#venueManageAccordion">
                 <div class="card-body">
-                <p>No upcoming games yet.</p>
+
+                <!-- Season Select Dropdown -->
+                <div class="form-group">
+                    <label for="gamesSeasonSelect">Season</label>
+                    <select id="gamesSeasonSelect" class="form-control form-control-sm">
+                    <option value="active" selected>Active Season</option>
+                    <!-- dynamically loaded options will be appended here -->
+                    </select>
+                </div>
+
+                <!-- Games List Table -->
+                <div id="venueGamesList">
+                    <p>Loading games...</p>
+                </div>
+
+                <hr>
                 <button class="btn btn-sm btn-primary" id="addGamesBtn">Add Games</button>
+
                 </div>
             </div>
             </div>
 
-          <!-- Venue Players -->
+
+          <!-- Venue Players Card-->
           <div class="card">
             <div class="card-header" id="headingPlayers">
               <h6 class="mb-0">
@@ -450,27 +472,72 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
 
-          <!-- Results & Rankings -->
-          <div class="card">
-            <div class="card-header" id="headingResults">
-              <h6 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseResults">
-                  🏆 Past Results & Rankings
-                </button>
-              </h6>
-            </div>
-            <div id="collapseResults" class="collapse" data-parent="#venueManageAccordion">
-              <div class="card-body">
-                <p>Results and leaderboard management coming soon.</p>
-              </div>
-            </div>
+
+    <!-- Scores Card-->
+    <div class="card">
+    <div class="card-header" id="headingResults">
+        <h6 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseResults">
+            📝 Scores
+        </button>
+        </h6>
+    </div>
+
+  <div id="collapseResults" class="collapse" data-parent="#venueManageAccordion">
+    <div class="card-body">
+
+      <!-- Scores Filter -->
+        <div class="form-group">
+        <label for="scoresFilterSelect">Show games:</label>
+        <select id="scoresFilterSelect" class="form-control form-control-sm">
+            <option value="last_game" selected>Last Game</option>
+            <option value="this_season">This Season</option>
+        </select>
+        </div>
+
+      <!-- Scores Table -->
+      <div id="venueScoresList">
+        <p>Loading scores...</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end of scores card-->
+
+<!-- Add Scores Modal -->
+<div class="modal fade" id="addScoresModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 id="addScoresModalLabel" class="modal-title">Add Points</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <!-- Available Players -->
+          <div class="col-md-6">
+            <h6>Available Players</h6>
+            <ul id="availablePlayersList" class="list-group connectedPlayerList sortable-container">
+              <li class="list-group-item text-muted text-center placeholder-item">Drag players here…</li>
+            </ul>
           </div>
 
+          <!-- Attending Players -->
+          <div class="col-md-6">
+            <h6>Attending & Scores (in placement order)</h6>
+            <ul id="attendingPlayersList" class="list-group connectedPlayerList sortable-container">
+              <li class="list-group-item text-muted text-center placeholder-item">Drag players here…</li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="saveScoresBtn" class="btn btn-success">💾 Save Scores</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
 
     </div>
@@ -488,6 +555,7 @@ window.addEventListener('DOMContentLoaded', () => {
 <script src="js/sb-admin-2.min.js"></script>
 <script src="vendor/chart.js/Chart.min.js"></script>
 <script src="../assets/js/venue-modals.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
 <!-- Toast container for dynamic toasts -->
 <div id="toast-container" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1080;"></div>
