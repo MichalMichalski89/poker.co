@@ -506,34 +506,40 @@ window.addEventListener('DOMContentLoaded', () => {
 <!-- end of scores card-->
 
 <!-- Add Scores Modal -->
-<div class="modal fade" id="addScoresModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="addScoresModal" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 id="addScoresModalLabel" class="modal-title">Add Points</h5>
+        <h5 id="addScoresModalLabel" class="modal-title">Add points</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <div class="modal-body">
         <div class="row">
           <!-- Available Players -->
-          <div class="col-md-6">
+          <div class="col-md-6 d-flex flex-column">
             <h6>Available Players</h6>
-            <ul id="availablePlayersList" class="list-group connectedPlayerList sortable-container">
-              <li class="list-group-item text-muted text-center placeholder-item">Drag players here…</li>
-            </ul>
+            <div class="flex-grow-1 d-flex flex-column">
+              <div class="d-flex border-bottom pb-1 mb-2 font-weight-bold">
+                <div class="flex-grow-1">Name (Username)</div>
+              </div>
+              <ul id="availablePlayersList" class="list-group connectedPlayerList sortable-container flex-grow-1"></ul>
+            </div>
           </div>
 
           <!-- Attending Players -->
-          <div class="col-md-6">
-            <h6>Attending & Scores (in placement order)</h6>
-            <ul id="attendingPlayersList" class="list-group connectedPlayerList sortable-container">
-              <li class="list-group-item text-muted text-center placeholder-item">Drag players here…</li>
-            </ul>
+          <div class="col-md-6 d-flex flex-column">
+            <h6>Attending & Scores</h6>
+            <div class="flex-grow-1 d-flex flex-column">
+              <div class="d-flex border-bottom pb-1 mb-2 font-weight-bold">
+                <div class="flex-grow-1">Name (Username)</div>
+              </div>
+              <ul id="attendingPlayersList" class="list-group connectedPlayerList sortable-container flex-grow-1"></ul>
+            </div>
           </div>
         </div>
-      </div>
+
 
       <div class="modal-footer">
         <button type="button" id="saveScoresBtn" class="btn btn-success">💾 Save Scores</button>
@@ -543,8 +549,6 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </div>
-
-
 
 
 

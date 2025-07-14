@@ -9,7 +9,7 @@ $isRootIndex   = ($currentScript === '/index.php');
 $isDashboard   = (strpos($currentScript, '/dashboard/') !== false);
 
 // Session timeout limit (in seconds)
-$sessionTimeout = 480;
+$sessionTimeout = 6000;
 
 // Check session timeout
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $sessionTimeout)) {

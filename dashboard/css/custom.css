@@ -1,46 +1,46 @@
-/* Drag handles */
-.move-handle {
-  cursor: grab;
-  margin-right: 8px;
-  font-size: 1.2em;
-  color: #888;
+/* List headers (Available / Scores headings) */
+.player-list-header {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
 }
 
-/* List item styling */
-.connectedPlayerList .player-item {
-  padding: 10px 14px;
-  border-radius: 6px;
-  margin-bottom: 6px;
+/* Player row styles */
+.player-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 6px;
   background: #fff;
   border: 1px solid #ccc;
+  margin-bottom: 6px;
+  cursor: grab;
 }
 
-/* Placeholder text item */
+/* Disable text selection on drag */
+body.dragging {
+  user-select: none;
+}
+
+/* Dragged item ghost clone */
+.sortable-ghost {
+  opacity: 0.5;
+  background: #f0f0f0;
+}
+
+/* Dragging placeholder (drop area preview) */
 .placeholder-item {
-  padding: 12px;
+  padding: 10px;
   background: #f8f9fa;
   border: 1px dashed #ccc;
   border-radius: 6px;
+  text-align: center;
 }
 
-/* Sortable classes */
-.sortable-ghost {
-  opacity: 0.4;
-}
-
-.sortable-chosen {
-  background-color: #e6f7ff;
-  border: 1px solid #80bdff;
-}
-
-.sortable-drag {
-  background-color: #fff3cd;
-  border: 1px dashed #ffc107;
-}
-
-/* List container styling */
+/* Container areas */
 .sortable-container {
   min-height: 300px;
   background: #fdfdfd;
@@ -48,10 +48,53 @@
   border-radius: 6px;
   padding: 10px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.move-handle {
-  cursor: grab;
-  font-size: 1.2rem;
-  user-select: none;
+/* Prevent horizontal scrollbars */
+.connectedPlayerList {
+  min-height: 200px;
+  padding: 5px;
+  overflow-x: hidden;
+}
+
+/* Player column header row (above player lists) */
+.player-table-header {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+/* Custom position badge (clean rounded label) */
+.position-label {
+  display: inline-block;
+  min-width: 26px;
+  padding: 3px 8px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-right: 8px;
+}
+
+/* Optional: highlight item being picked up */
+.sortable-chosen {
+  background: #e9f5ff;
+  border-color: #80bdff;
+}
+
+/* Disable scrolling while modal is open */
+body.modal-open {
+  overflow-y: auto !important;
+}
+
+
+.modal-backdrop + .modal {
+  z-index: 1056;
 }

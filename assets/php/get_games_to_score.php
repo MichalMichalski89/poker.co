@@ -95,12 +95,14 @@ if ($result->num_rows === 0) {
                     data-gameid='$gameId' 
                     data-date='$eventDate' 
                     data-type='$gameType'
-                    data-venuename='$venueName'>Edit Scores</button>"
+                    data-venuename='$venueName'
+                    data-venueid='$venue_id'>Edit Scores</button>"
             : "<button class='btn btn-sm btn-outline-primary add-scores-btn' 
                     data-gameid='$gameId' 
                     data-date='$eventDate' 
                     data-type='$gameType'
-                    data-venuename='$venueName'>Add Scores</button>";
+                    data-venuename='$venueName'
+                    data-venueid='$venue_id'>Add Scores</button>";
 
         echo "<tr>
                 <td>{$i}</td>

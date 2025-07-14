@@ -1,87 +1,66 @@
 <?php
 require("conn.php");
+session_start();
 
 if (!isset($_GET['game_id']) || !is_numeric($_GET['game_id'])) {
-    echo json_encode(['available' => '', 'attending' => '']);
-    exit;
+    die(json_encode(["error" => "Invalid game ID."]));
 }
 
-$game_id = (int)$_GET['game_id'];
+$game_id = intval($_GET['game_id']);
 
-// Get venue_id for this game
-$stmt = $mysqli->prepare("SELECT venue_id FROM game_events WHERE id = ?");
-$stmt->bind_param("i", $game_id);
-$stmt->execute();
-$stmt->bind_result($venue_id);
-$stmt->fetch();
-$stmt->close();
+// Fetch available players with last game date for sorting
+$availableSql = "SELECT u.id, u.first_name, u.last_name, u.username,
+                    MAX(ge.event_date) AS last_game
+                FROM player_venues pv
+                JOIN users u ON pv.user_id = u.id
+                LEFT JOIN game_results gr ON gr.user_id = u.id
+                LEFT JOIN game_events ge ON gr.game_event_id = ge.id
+                WHERE pv.venue_id = (SELECT venue_id FROM game_events WHERE id = ?)
+                  AND u.id NOT IN (SELECT user_id FROM game_results WHERE game_event_id = ?)
+                GROUP BY u.id
+                ORDER BY last_game DESC, u.last_name, u.first_name";
 
-$available = '';
-$attending = '';
+$availableStmt = $mysqli->prepare($availableSql);
+$availableStmt->bind_param("ii", $game_id, $game_id);
+$availableStmt->execute();
+$availableResult = $availableStmt->get_result();
 
-// Get IDs of players already in game_results for this game
-$attending_ids = [];
-$stmt = $mysqli->prepare("SELECT user_id FROM game_results WHERE game_event_id = ?");
-$stmt->bind_param("i", $game_id);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-    $attending_ids[] = $row['user_id'];
+$availablePlayers = "";
+while ($row = $availableResult->fetch_assoc()) {
+    $username = htmlspecialchars($row['username']);
+    $fullName = htmlspecialchars($row['first_name'] . ' ' . $row['last_name']);
+
+    $availablePlayers .= "<li class='list-group-item player-item d-flex' data-userid='{$row['id']}'>
+        <div class='flex-grow-1'>{$fullName} ({$username})</div>
+      </li>";
 }
-$stmt->close();
+$availableStmt->close();
 
-// Fetch players from game_results ordered by position
-if (!empty($attending_ids)) {
-    $query = "SELECT u.id, u.first_name, u.last_name
-              FROM game_results gr
-              JOIN users u ON gr.user_id = u.id
-              WHERE gr.game_event_id = ?
-              ORDER BY gr.position ASC";
+// Fetch attending players (no extra data needed)
+$attendingSql = "SELECT u.id, u.first_name, u.last_name, u.username
+                FROM game_results gr
+                JOIN users u ON gr.user_id = u.id
+                WHERE gr.game_event_id = ?
+                ORDER BY gr.position ASC";
 
-    $stmt = $mysqli->prepare($query);
-    $stmt->bind_param("i", $game_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$attendingStmt = $mysqli->prepare($attendingSql);
+$attendingStmt->bind_param("i", $game_id);
+$attendingStmt->execute();
+$attendingResult = $attendingStmt->get_result();
 
-    while ($row = $result->fetch_assoc()) {
-        $attending .= "<li class='list-group-item player-item d-flex align-items-center' data-userid='{$row['id']}'>
-            <span class='move-handle mr-2'>☰</span> " . htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) . "
-        </li>";
-    }
-    $stmt->close();
+$attendingPlayers = "";
+while ($row = $attendingResult->fetch_assoc()) {
+    $username = htmlspecialchars($row['username']);
+    $fullName = htmlspecialchars($row['first_name'] . ' ' . $row['last_name']);
+
+    $attendingPlayers .= "<li class='list-group-item player-item d-flex' data-userid='{$row['id']}'>
+        <div class='flex-grow-1'>{$fullName} ({$username})</div>
+      </li>";
 }
+$attendingStmt->close();
 
-// Fetch venue players excluding those already in game_results
-$query = "SELECT u.id, u.first_name, u.last_name
-          FROM users u
-          JOIN player_venues pv ON u.id = pv.user_id
-          WHERE pv.venue_id = ?";
-
-if (!empty($attending_ids)) {
-    $placeholders = implode(',', array_fill(0, count($attending_ids), '?'));
-    $query .= " AND u.id NOT IN ($placeholders)";
-}
-
-$stmt = $mysqli->prepare($query);
-
-if (!empty($attending_ids)) {
-    $types = str_repeat('i', count($attending_ids));
-    $stmt->bind_param("i" . $types, $venue_id, ...$attending_ids);
-} else {
-    $stmt->bind_param("i", $venue_id);
-}
-
-$stmt->execute();
-$result = $stmt->get_result();
-
-while ($row = $result->fetch_assoc()) {
-    $available .= "<li class='list-group-item player-item d-flex align-items-center' data-userid='{$row['id']}'>
-        <span class='move-handle mr-2'>☰</span> " . htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) . "
-    </li>";
-}
-
-$stmt->close();
-
-// Return both lists as JSON
-echo json_encode(['available' => $available, 'attending' => $attending]);
+echo json_encode([
+    "available" => $availablePlayers,
+    "attending" => $attendingPlayers
+]);
 ?>
